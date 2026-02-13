@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lontra - Your mind, understood.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --olive: #5C6B4F;
+            --olive-deep: #3D4A33;
+            --olive-light: #7A8B6A;
+            --sage: #8A9A7B;
+            --sage-soft: #A8B89A;
+            --butter: #E8D5A3;
+            --butter-light: #F2E4BF;
+            --sand: #E8DDD0;
+            --sand-warm: #D9CCBB;
+            --cream: #F5F0E8;
+            --cream-warm: #EDE6DA;
+            --bark: #3C2F24;
+            --bark-mid: #5A4A3A;
+            --bark-light: #7A6A5A;
+            --sky: #7BAFCF;
+            --sky-soft: #A3CAE0;
+            --white: #FFFFFF;
+            --charcoal: #2A2A2A;
+            --charcoal-soft: #555;
+            --font-serif: 'Rethink Sans', -apple-system, sans-serif;
+            --font-sans: 'Atkinson Hyperlegible Next', -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ====== GRAIN ====== */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.022;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px;
+        }
+
+        /* ====== SCROLL REVEAL ====== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.9s cubic-bezier(.25,.46,.45,.94), transform 0.9s cubic-bezier(.25,.46,.45,.94);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.15s; }
+        .reveal-d2 { transition-delay: 0.3s; }
+        .reveal-d3 { transition-delay: 0.45s; }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ====== NAV ====== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+        }
+        .nav.scrolled {
+            background: rgba(245, 240, 232, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 rgba(60,47,36,0.06);
+        }
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.4s;
+        }
+        .nav.scrolled .nav-logo { color: var(--bark); }
+        .nav-cta {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--bark);
+            background: var(--white);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            opacity: 0.9;
+        }
+        .nav-cta:hover { transform: translateY(-1px); opacity: 1; }
+        .nav.scrolled .nav-cta {
+            background: var(--olive);
+            color: var(--white);
+        }
+
+        /* ====== SECTION 1: HERO (Full-bleed photo + left text + giant wordmark) ====== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-media video,
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(60,47,36,0.15) 0%,
+                rgba(60,47,36,0.05) 40%,
+                rgba(60,47,36,0.4) 75%,
+                rgba(60,47,36,0.7) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 0 48px 0;
+        }
+        .hero-text-area {
+            max-width: 560px;
+            padding-bottom: 140px;
+        }
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fade-up 1s ease 0.3s forwards;
+        }
+        .hero-sub {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            font-weight: 400;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.75);
+            max-width: 420px;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fade-up 1s ease 0.5s forwards;
+        }
+        .hero-cta-wrap {
+            opacity: 0;
+            animation: fade-up 1s ease 0.7s forwards;
+        }
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--bark);
+            background: var(--cream);
+            border: none;
+            padding: 16px 36px;
+            border-radius: 52px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+        }
+        .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+        .btn-hero .arr { transition: transform 0.25s; }
+        .btn-hero:hover .arr { transform: translateX(3px); }
+
+        /* Giant bleed wordmark at bottom of hero */
+        .hero-wordmark {
+            position: absolute;
+            bottom: -0.18em;
+            left: 48px;
+            right: 48px;
+            font-family: var(--font-serif);
+            font-size: clamp(8rem, 18vw, 16rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.08);
+            line-height: 0.85;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* ====== SECTION 2: TAGLINE + FLOATING AVATARS ====== */
+        .tagline-section {
+            padding: 140px 48px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--cream);
+        }
+        .tagline-section h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            line-height: 1.3;
+            color: var(--bark);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .tagline-section h2 em {
+            font-style: normal;
+            color: var(--olive);
+        }
+
+        /* Floating avatar circles */
+        .avatar-float {
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .avatar-float img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .avatar-float::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 3px solid;
+            pointer-events: none;
+        }
+        .av-1 { width: 80px; height: 80px; top: 15%; left: 8%; animation: float-a 14s ease-in-out infinite; }
+        .av-1::after { border-color: var(--sage-soft); }
+        .av-2 { width: 64px; height: 64px; top: 22%; right: 12%; animation: float-b 16s ease-in-out infinite; }
+        .av-2::after { border-color: var(--butter); }
+        .av-3 { width: 56px; height: 56px; bottom: 20%; left: 14%; animation: float-c 12s ease-in-out infinite; }
+        .av-3::after { border-color: var(--sky-soft); }
+        .av-4 { width: 72px; height: 72px; bottom: 18%; right: 9%; animation: float-a 18s ease-in-out infinite reverse; }
+        .av-4::after { border-color: var(--sand-warm); }
+        .av-5 { width: 48px; height: 48px; top: 42%; left: 5%; animation: float-b 15s ease-in-out infinite; }
+        .av-5::after { border-color: var(--olive-light); }
+
+        @keyframes float-a {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-16px) rotate(3deg); }
+        }
+        @keyframes float-b {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(-2deg); }
+        }
+        @keyframes float-c {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ====== SECTION 3: VALUE PROP (text-only, massive whitespace) ====== */
+        .value-section {
+            padding: 100px 48px 120px;
+            background: var(--cream-warm);
+        }
+        .value-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .value-label {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            color: var(--olive);
+            margin-bottom: 28px;
+            line-height: 1.2;
+        }
+        .value-inner h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--bark);
+            margin-bottom: 24px;
+        }
+        .value-inner p {
+            font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+            line-height: 1.8;
+            color: var(--bark-light);
+            max-width: 660px;
+            margin: 0 auto;
+            text-wrap: balance;
+        }
+
+        /* ====== SECTION 4: PHONE-IN-HAND LIFESTYLE (photo + gradient) ====== */
+        .phone-lifestyle {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .phone-lifestyle-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .phone-lifestyle-media video,
+        .phone-lifestyle-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Dark overlay for text legibility */
+        .phone-lifestyle-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(60, 47, 36, 0.3) 0%,
+                rgba(60, 47, 36, 0.5) 50%,
+                rgba(60, 47, 36, 0.7) 100%
+            );
+        }
+        .phone-lifestyle-text {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            text-align: center;
+            padding: 0 48px;
+        }
+        .phone-lifestyle-text p {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 300;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+            text-wrap: balance;
+        }
+
+        /* ====== SECTION 5: GUARDIAN TEXT ====== */
+        .guardian-section {
+            padding: 120px 48px;
+            background: var(--cream);
+            text-align: center;
+        }
+        .guardian-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .guardian-inner h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 300;
+            line-height: 1.3;
+            color: var(--bark);
+            margin-bottom: 20px;
+        }
+        .guardian-inner p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--bark-light);
+        }
+
+        /* ====== SECTION 6: HOW LONTRA WORKS (3-step) ====== */
+        .how-section {
+            padding: 120px 48px 140px;
+            background: var(--cream);
+        }
+        .how-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .how-header h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            color: var(--bark);
+            margin-bottom: 8px;
+        }
+        .how-header .how-sub {
+            font-size: 1.05rem;
+            color: var(--bark-light);
+            margin-bottom: 20px;
+        }
+        .how-steps-label {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--olive);
+        }
+        .how-steps-label span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .how-steps-label .step-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--olive);
+            color: var(--white);
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Individual step row */
+        .how-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            align-items: center;
+        }
+        .how-step:last-child { margin-bottom: 0; }
+        .how-step.reverse { direction: rtl; }
+        .how-step.reverse > * { direction: ltr; }
+
+        .how-step-text {
+            max-width: 460px;
+        }
+        .how-step-num {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--olive);
+            margin-bottom: 12px;
+        }
+        .how-step-text h3 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+            font-weight: 300;
+            color: var(--bark);
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+        .how-step-text p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--bark-light);
+        }
+
+        /* App mockup for each step */
+        .how-phone {
+            width: 260px;
+            height: 520px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 32px 72px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.08);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+        .how-phone-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px 8px;
+            font-size: 0.68rem;
+            font-weight: 600;
+        }
+        .how-phone-logo {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .how-phone-content {
+            flex: 1;
+            padding: 8px 16px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .how-phone-day {
+            font-size: 0.68rem;
+            margin-bottom: 4px;
+        }
+        .how-phone-greeting {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+        .how-phone-card {
+            border-radius: 20px;
+            padding: 20px 16px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .how-phone-card-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        /* Score circles */
+        .how-scores {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: auto;
+            padding: 12px 0 8px;
+        }
+        .how-score {
+            text-align: center;
+        }
+        .how-score-ring {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 4px;
+            position: relative;
+        }
+        .how-score-ring svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        .how-score-ring svg circle {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+        .how-score-num {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        .how-score-label {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            opacity: 0.7;
+        }
+
+        /* Bottom nav bar in phone */
+        .how-phone-tabs {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 14px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .how-phone-fab {
+            position: absolute;
+            bottom: 52px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #E87A3A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(232,122,58,0.4);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 300;
+            z-index: 2;
+        }
+
+        /* Step 1 phone: Butter/cream (lightest) */
+        .phone-step1 {
+            background: linear-gradient(160deg, #F2E4BF 0%, #E8D5A3 40%, #D9C68E 100%);
+        }
+        .phone-step1 .how-phone-status,
+        .phone-step1 .how-phone-logo,
+        .phone-step1 .how-phone-day,
+        .phone-step1 .how-phone-greeting,
+        .phone-step1 .how-phone-card-title,
+        .phone-step1 .how-score-num { color: var(--bark); }
+        .phone-step1 .how-phone-day { color: var(--bark-light); }
+        .phone-step1 .how-phone-card { background: rgba(255,255,255,0.45); }
+        .phone-step1 .how-phone-tabs { color: var(--bark-light); }
+        .phone-step1 .how-score-label { color: var(--bark-light); }
+        .phone-step1 .how-score-ring svg .ring-bg { stroke: rgba(60,47,36,0.08); }
+        .phone-step1 .how-score-ring svg .ring-fg { stroke: var(--olive); }
+
+        /* Step 2 phone: Sand/warm mid tone */
+        .phone-step2 {
+            background: linear-gradient(160deg, #D9CCBB 0%, #C2B49E 40%, #A89880 100%);
+        }
+        .phone-step2 .how-phone-status,
+        .phone-step2 .how-phone-logo,
+        .phone-step2 .how-phone-day,
+        .phone-step2 .how-phone-greeting,
+        .phone-step2 .how-phone-card-title,
+        .phone-step2 .how-score-num { color: var(--bark); }
+        .phone-step2 .how-phone-day { color: var(--bark-mid); }
+        .phone-step2 .how-phone-card { background: rgba(255,255,255,0.35); }
+        .phone-step2 .how-phone-tabs { color: var(--bark-mid); }
+        .phone-step2 .how-score-label { color: var(--bark-mid); }
+        .phone-step2 .how-score-ring svg .ring-bg { stroke: rgba(60,47,36,0.1); }
+        .phone-step2 .how-score-ring svg .ring-fg { stroke: var(--olive); }
+
+        /* Step 3 phone: Olive deep (darkest) */
+        .phone-step3 {
+            background: linear-gradient(160deg, #4A5B3D 0%, #3D4A33 40%, #2E3926 100%);
+        }
+        .phone-step3 .how-phone-status,
+        .phone-step3 .how-phone-logo,
+        .phone-step3 .how-phone-greeting,
+        .phone-step3 .how-score-num { color: rgba(255,255,255,0.9); }
+        .phone-step3 .how-phone-day { color: rgba(255,255,255,0.45); }
+        .phone-step3 .how-phone-card-title { color: rgba(255,255,255,0.85); }
+        .phone-step3 .how-phone-card {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .phone-step3 .how-phone-tabs { color: rgba(255,255,255,0.4); }
+        .phone-step3 .how-score-label { color: rgba(255,255,255,0.4); }
+        .phone-step3 .how-score-ring svg .ring-bg { stroke: rgba(255,255,255,0.08); }
+        .phone-step3 .how-score-ring svg .ring-fg { stroke: var(--sage-soft); }
+
+        /* ====== SECTION 7: APP SCREENS SHOWCASE ====== */
+        .screens-section {
+            padding: 120px 48px;
+            background: var(--cream);
+            overflow: hidden;
+        }
+        .screens-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .screens-text h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 300;
+            color: var(--bark);
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        .screens-text p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--bark-light);
+            max-width: 420px;
+        }
+        .screens-visual {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .app-screen-card {
+            width: 220px;
+            height: 420px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+            position: relative;
+        }
+        .app-screen-card:nth-child(2) {
+            margin-top: 40px;
+        }
+
+        /* Screen 1: Light warm mode */
+        .screen-light {
+            background: linear-gradient(160deg, #E8DDD0 0%, #D9CCBB 50%, #C8BAA6 100%);
+            padding: 28px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+        .scr-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--bark);
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+        .scr-greeting {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--bark);
+            margin-bottom: 6px;
+            padding: 0 4px;
+        }
+        .scr-date {
+            font-size: 0.7rem;
+            color: var(--bark-light);
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+        .scr-checkin {
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 20px 16px;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+        .scr-checkin-q {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--bark);
+            margin-bottom: 14px;
+        }
+        .scr-mood-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .scr-mood-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .scr-mood-btn.selected {
+            background: var(--olive);
+            box-shadow: 0 2px 10px rgba(92,107,79,0.3);
+        }
+        .scr-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .scr-stat {
+            background: rgba(255,255,255,0.4);
+            border-radius: 14px;
+            padding: 14px 12px;
+            text-align: center;
+        }
+        .scr-stat-num {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--bark);
+            line-height: 1;
+        }
+        .scr-stat-label {
+            font-size: 0.6rem;
+            color: var(--bark-light);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .scr-nav-bar {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0 0;
+        }
+        .scr-nav-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--bark-light);
+            opacity: 0.3;
+        }
+        .scr-nav-dot.active { opacity: 1; background: var(--olive); }
+
+        /* Screen 2: Dark olive mode */
+        .screen-dark {
+            background: linear-gradient(160deg, #3D4A33 0%, #2E3926 50%, #1E2618 100%);
+            padding: 28px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+        .scr-d-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+        .scr-d-greeting {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 6px;
+            padding: 0 4px;
+        }
+        .scr-d-date {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+        .scr-d-checkin {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 20px 16px;
+            text-align: center;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .scr-d-checkin-q {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 14px;
+        }
+        .scr-d-mood-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .scr-d-mood-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .scr-d-mood-btn.selected {
+            background: var(--sage);
+            box-shadow: 0 2px 10px rgba(138,154,123,0.3);
+        }
+        .scr-d-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .scr-d-stat {
+            background: rgba(255,255,255,0.05);
+            border-radius: 14px;
+            padding: 14px 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .scr-d-stat-num {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1;
+        }
+        .scr-d-stat-label {
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ====== SECTION 8: WHY LONTRA (brand story) ====== */
+        .story-section {
+            padding: 120px 48px;
+            background: var(--cream-warm);
+            text-align: center;
+        }
+        .story-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .story-label {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--olive);
+            margin-bottom: 20px;
+        }
+        .story-inner h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 300;
+            line-height: 1.3;
+            color: var(--bark);
+            margin-bottom: 28px;
+            white-space: nowrap;
+        }
+        .story-inner p {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--bark-light);
+            margin-bottom: 16px;
+            text-wrap: balance;
+        }
+        .story-inner p:last-child { margin-bottom: 0; }
+
+        /* ====== SECTION 9: FOUNDER LETTER ====== */
+        .founder-section {
+            padding: 120px 48px;
+            background: linear-gradient(160deg, var(--butter-light) 0%, var(--sand) 50%, var(--cream-warm) 100%);
+        }
+        .founder-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .founder-inner .founder-label {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--olive);
+            margin-bottom: 24px;
+        }
+        .founder-inner blockquote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.7;
+            color: var(--bark);
+            margin-bottom: 28px;
+        }
+        .founder-sig {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--bark-light);
+        }
+
+        /* ====== SECTION 10: FINAL CTA ====== */
+        .final-cta {
+            padding: 120px 48px;
+            background: var(--olive-deep);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(138,154,123,0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+        .cta-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-inner h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+        .btn-cta-main {
+            display: block;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 48px;
+            background: var(--white);
+            color: var(--bark);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-cta-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(255,255,255,0.15);
+        }
+
+        /* Waitlist form (modal only now) */
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .waitlist-form input {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            padding: 16px 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            background: rgba(255,255,255,0.06);
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+        }
+        .waitlist-form input::placeholder { color: rgba(255,255,255,0.3); }
+        .waitlist-form input:focus {
+            border-color: var(--sage);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 0 3px rgba(138,154,123,0.2);
+        }
+        .btn-waitlist {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--olive-deep);
+            background: var(--cream);
+            border: none;
+            padding: 17px 36px;
+            border-radius: 52px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            width: 100%;
+        }
+        .btn-waitlist:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .form-note {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 4px;
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 24px 0;
+        }
+        .form-success.show { display: block; }
+        .form-success .check-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--sky));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes pop-in {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .form-success .check-circle svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; }
+        .form-success p { font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-bottom: 6px; }
+        .form-success span { font-size: 0.95rem; color: rgba(255,255,255,0.5); }
+        .waitlist-form.hidden { display: none; }
+
+        /* ====== WAITLIST MODAL ====== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-card {
+            background: linear-gradient(160deg, var(--olive-deep) 0%, #2E3926 40%, #1E2618 100%);
+            border-radius: 28px;
+            padding: 48px 40px 40px;
+            max-width: 440px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+            transform: translateY(20px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-overlay.open .modal-card {
+            transform: translateY(0) scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+        .modal-card h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 6px;
+        }
+        .modal-card .modal-sub {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 28px;
+        }
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .modal-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .modal-form input {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            padding: 15px 18px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            outline: none;
+            transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+        }
+        .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+        .modal-form input:focus {
+            border-color: var(--sage);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 0 3px rgba(138,154,123,0.2);
+        }
+        .modal-form .btn-waitlist { width: 100%; margin-top: 4px; }
+        .modal-form .form-note { margin-top: 4px; }
+        .modal-success {
+            display: none;
+            text-align: center;
+            padding: 24px 0;
+        }
+        .modal-success.show { display: block; }
+        .modal-success .check-circle {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--sky));
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .modal-success .check-circle svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; }
+        .modal-success p { font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-bottom: 6px; }
+        .modal-success span { font-size: 0.95rem; color: rgba(255,255,255,0.5); }
+        .modal-form.hidden { display: none; }
+
+        /* ====== FOOTER ====== */
+        .footer {
+            padding: 40px 48px;
+            background: var(--olive-deep);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-wordmark {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.4);
+        }
+        .footer-note {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 900px) {
+            .nav { padding: 16px 24px; }
+            .hero-content { padding: 0 24px; }
+            .hero-text-area { padding-bottom: 100px; }
+            .hero-wordmark { font-size: clamp(5rem, 14vw, 10rem); left: 24px; right: 24px; }
+            .tagline-section { padding: 100px 24px 80px; }
+            .av-1, .av-2, .av-3, .av-4, .av-5 { display: none; }
+            .value-section { padding: 80px 24px; }
+            .phone-lifestyle { min-height: 80vh; }
+            .phone-lifestyle-text { padding: 0 24px; }
+            .guardian-section { padding: 80px 24px; }
+            .how-section { padding: 80px 24px; }
+            .how-step { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .how-step.reverse { direction: ltr; }
+            .how-step-text { max-width: 100%; margin: 0 auto; }
+            .how-phone { width: 220px; height: 440px; }
+            .screens-section { padding: 80px 24px; }
+            .screens-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+            .screens-text p { margin: 0 auto; }
+            .screens-visual { gap: 12px; }
+            .app-screen-card { width: 180px; height: 340px; }
+            .story-section { padding: 80px 24px; }
+            .founder-section { padding: 80px 24px; }
+            .final-cta { padding: 80px 24px; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer { padding: 24px; flex-direction: column; gap: 8px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero-wordmark { font-size: 4.5rem; }
+            .app-screen-card { width: 150px; height: 290px; }
+            .phone-lifestyle { min-height: 60vh; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero h1, .hero-sub, .hero-cta-wrap { opacity: 1; animation: none; }
+            .av-1, .av-2, .av-3, .av-4, .av-5 { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav">
+        <a href="#" class="nav-logo">Lontra</a>
+        <a href="#" class="nav-cta" onclick="openModal(); return false;">Get early access</a>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero">
+        <div class="hero-media">
+            <video autoplay muted loop playsinline poster="hero-coastal.png">
+                <source src="video-outdoor.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text-area">
+                <h1>Your mind,<br>understood.</h1>
+                <p class="hero-sub">
+                    Lontra helps you understand what's happening in your mind
+                    and build resiliency one step at a time. Guided by real
+                    clinicians. Powered by AI. Built around you.
+                </p>
+                <div class="hero-cta-wrap">
+                    <a href="#" class="btn-hero" onclick="openModal(); return false;">
+                        Join the waitlist
+                        <span class="arr">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wordmark" aria-hidden="true">Lontra</div>
+    </section>
+
+    <!-- SECTION 2: VALUE PROP (merged tagline + value) -->
+    <section class="value-section">
+        <div class="value-inner reveal">
+            <div class="value-label">A new kind of mental fitness</div>
+            <p>
+                Lontra is the daily companion that helps you understand your patterns,
+                manage stress in real time, and build genuine emotional resilience.
+                For the times that call for more than meditation, but you don't need
+                a therapist. Lontra is the in-between your mind has been missing.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: HOW LONTRA WORKS -->
+    <section class="how-section">
+        <div class="how-header reveal">
+            <h2>How Lontra Works</h2>
+            <p class="how-sub">3 steps to a stronger mind</p>
+            <div class="how-steps-label">
+                <span><span class="step-num">1</span> Learn</span>
+                <span><span class="step-num">2</span> Support</span>
+                <span><span class="step-num">3</span> Build</span>
+            </div>
+        </div>
+
+        <!-- Step 01 -->
+        <div class="how-step reveal">
+            <div class="how-step-text">
+                <div class="how-step-num">Step 01</div>
+                <h3>Learn what's happening</h3>
+                <p>
+                    Lontra helps you see the patterns you can't see on your own.
+                    Through brief daily check-ins and conversational AI, it maps
+                    how your cognition, emotions, and resilience shift throughout
+                    the week, giving you a clear picture of where you are and
+                    what's driving it.
+                </p>
+            </div>
+            <div class="how-phone phone-step1">
+                <div class="how-phone-status">
+                    <span>9:41</span>
+                    <span class="how-phone-logo">R</span>
+                </div>
+                <div class="how-phone-content">
+                    <div class="how-phone-day">Monday, February 9</div>
+                    <div class="how-phone-greeting">Your patterns this week</div>
+                    <div class="how-phone-card">
+                        <div class="how-phone-card-title">How's it going today?</div>
+                        <div style="display:flex;justify-content:center;gap:8px;">
+                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:1rem;">&#128524;</div>
+                            <div style="width:36px;height:36px;border-radius:50%;background:var(--olive);display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px rgba(92,107,79,0.3);">&#128522;</div>
+                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:1rem;">&#128528;</div>
+                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:1rem;">&#128533;</div>
+                        </div>
+                    </div>
+                    <div class="how-scores">
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="17"/></svg>
+                                <span class="how-score-num">88</span>
+                            </div>
+                            <div class="how-score-label">Cognition</div>
+                        </div>
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="22"/></svg>
+                                <span class="how-score-num">84</span>
+                            </div>
+                            <div class="how-score-label">Emotion</div>
+                        </div>
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="12"/></svg>
+                                <span class="how-score-num">91</span>
+                            </div>
+                            <div class="how-score-label">Resilience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-phone-tabs">
+                    <span>Cognition</span>
+                    <span>Emotion</span>
+                    <span style="opacity:1;font-weight:700;">Resilience</span>
+                </div>
+                <div class="how-phone-fab">+</div>
+            </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="how-step reverse reveal">
+            <div class="how-step-text">
+                <div class="how-step-num">Step 02</div>
+                <h3>Get the right support in the moment</h3>
+                <p>
+                    When stress spikes or something feels off, Lontra doesn't
+                    hand you a generic breathing exercise. It draws from
+                    clinically validated techniques, adapted to your patterns, to
+                    give you real support when you actually need it. Like a
+                    coach who knows your playbook.
+                </p>
+            </div>
+            <div class="how-phone phone-step2">
+                <div class="how-phone-status">
+                    <span>9:41</span>
+                    <span class="how-phone-logo">R</span>
+                </div>
+                <div class="how-phone-content">
+                    <div class="how-phone-day">Monday, February 9</div>
+                    <div class="how-phone-greeting">In-the-moment support</div>
+                    <div class="how-phone-card">
+                        <div class="how-phone-card-title">I want to feel more focused</div>
+                        <div style="font-size:0.75rem;color:var(--bark-mid);line-height:1.5;margin-top:8px;text-align:left;">
+                            Great goal. Based on your patterns, here's something that's helped you lock in before...
+                        </div>
+                    </div>
+                    <div class="how-phone-card" style="padding:14px 16px;">
+                        <div style="font-size:0.7rem;color:var(--bark-mid);text-align:left;display:flex;align-items:center;gap:8px;">
+                            <span style="width:28px;height:28px;border-radius:50%;background:rgba(92,107,79,0.15);display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;">&#127793;</span>
+                            Grounding exercise (2 min)
+                        </div>
+                    </div>
+                    <div class="how-scores">
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="17"/></svg>
+                                <span class="how-score-num">88</span>
+                            </div>
+                            <div class="how-score-label">Cognition</div>
+                        </div>
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="22"/></svg>
+                                <span class="how-score-num">84</span>
+                            </div>
+                            <div class="how-score-label">Emotion</div>
+                        </div>
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="12"/></svg>
+                                <span class="how-score-num">91</span>
+                            </div>
+                            <div class="how-score-label">Resilience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-phone-tabs">
+                    <span>Cognition</span>
+                    <span>Emotion</span>
+                    <span style="opacity:1;font-weight:700;">Resilience</span>
+                </div>
+                <div class="how-phone-fab">+</div>
+            </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="how-step reveal">
+            <div class="how-step-text">
+                <div class="how-step-num">Step 03</div>
+                <h3>Build your capacity over time</h3>
+                <p>
+                    Lontra adapts as you grow. It tracks your cognitive and
+                    emotional baselines, evolves its recommendations, and gives
+                    you a clear view of progress. A licensed clinician reviews
+                    everything behind the scenes so you're always supported by
+                    both intelligence and experience.
+                </p>
+            </div>
+            <div class="how-phone phone-step3">
+                <div class="how-phone-status">
+                    <span>9:41</span>
+                    <span class="how-phone-logo">R</span>
+                </div>
+                <div class="how-phone-content">
+                    <div class="how-phone-day">Monday, February 9</div>
+                    <div class="how-phone-greeting">Your progress</div>
+                    <div class="how-phone-card">
+                        <div class="how-phone-card-title">Resilience: trending up</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;justify-content:center;margin-top:10px;height:48px;">
+                            <div style="width:12px;height:20px;border-radius:4px;background:rgba(168,184,154,0.3);"></div>
+                            <div style="width:12px;height:26px;border-radius:4px;background:rgba(168,184,154,0.4);"></div>
+                            <div style="width:12px;height:22px;border-radius:4px;background:rgba(168,184,154,0.35);"></div>
+                            <div style="width:12px;height:32px;border-radius:4px;background:rgba(168,184,154,0.5);"></div>
+                            <div style="width:12px;height:28px;border-radius:4px;background:rgba(168,184,154,0.45);"></div>
+                            <div style="width:12px;height:38px;border-radius:4px;background:rgba(168,184,154,0.6);"></div>
+                            <div style="width:12px;height:44px;border-radius:4px;background:var(--sage-soft);"></div>
+                        </div>
+                    </div>
+                    <div class="how-phone-card" style="padding:12px 16px;">
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-align:left;display:flex;align-items:center;gap:8px;">
+                            <span style="width:24px;height:24px;border-radius:50%;background:rgba(168,184,154,0.2);display:inline-flex;align-items:center;justify-content:center;font-size:0.7rem;">&#9745;</span>
+                            Clinician reviewed
+                        </div>
+                    </div>
+                    <div class="how-scores">
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="17"/></svg>
+                                <span class="how-score-num">88</span>
+                            </div>
+                            <div class="how-score-label">Cognition</div>
+                        </div>
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="22"/></svg>
+                                <span class="how-score-num">84</span>
+                            </div>
+                            <div class="how-score-label">Emotion</div>
+                        </div>
+                        <div class="how-score">
+                            <div class="how-score-ring">
+                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="12"/></svg>
+                                <span class="how-score-num">91</span>
+                            </div>
+                            <div class="how-score-label">Resilience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-phone-tabs">
+                    <span>Cognition</span>
+                    <span>Emotion</span>
+                    <span style="opacity:1;font-weight:700;">Resilience</span>
+                </div>
+                <div class="how-phone-fab">+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: GUARDIAN -->
+    <section class="guardian-section">
+        <div class="guardian-inner reveal">
+            <h2>A clinician is always in the loop.</h2>
+            <p>
+                Every insight Lontra gives you is backed by a licensed clinician
+                who reviews your progress, adjusts your plan, and makes sure
+                the AI is working for you. Not the other way around.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 6B: LIFESTYLE QUOTE -->
+    <section class="phone-lifestyle">
+        <div class="phone-lifestyle-media reveal">
+            <video autoplay muted loop playsinline poster="hero-cozy.png">
+                <source src="video-phone-smile.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="phone-lifestyle-text reveal reveal-d2">
+            <p>"It felt like someone finally understood what was going on in my head."</p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: WHY LONTRA -->
+    <section class="story-section">
+        <div class="story-inner reveal">
+            <div class="story-label">Why Lontra</div>
+            <h2>Lontra is the genus name for otters.</h2>
+            <p>
+                Otters are resilient, social, and endlessly adaptable. They float on
+                their backs, hold hands to stay connected as they ride the waves, and
+                navigate turbulent waters with something that looks a lot like ease.
+                We're building Lontra to bring that same vibe to your mind: clarity,
+                support, and an ever-present partner as you move through the&nbsp;world.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 9: FINAL CTA -->
+    <section class="final-cta" id="waitlist">
+        <div class="cta-inner reveal">
+            <h2>Ready when you are.</h2>
+            <a href="#" class="btn-cta-main" onclick="openModal(); return false;">Get early access</a>
+        </div>
+    </section>
+
+    <!-- WAITLIST MODAL -->
+    <div class="modal-overlay" id="waitlistModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+            <h2>Join the waitlist</h2>
+            <p class="modal-sub">Lontra is launching soon. We'll reach out when it's time.</p>
+            <form class="modal-form" id="modalForm" onsubmit="handleModalSubmit(event)">
+                <div class="form-row">
+                    <input type="text" name="firstName" placeholder="First name" required aria-label="First name">
+                    <input type="text" name="lastName" placeholder="Last name" required aria-label="Last name">
+                </div>
+                <input type="email" name="email" placeholder="Email" required aria-label="Email address">
+                <button type="submit" class="btn-waitlist">Get early access</button>
+                <p class="form-note">Launch updates only. That's it.</p>
+            </form>
+            <div class="modal-success" id="modalSuccess">
+                <div class="check-circle">
+                    <svg viewBox="0 0 24 24"><polyline points="6 12 10 16 18 8"></polyline></svg>
+                </div>
+                <p>You're on the list.</p>
+                <span>We'll be in touch.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <span class="footer-wordmark">Lontra</span>
+        <span class="footer-note">&copy; 2026 Lontra. All rights reserved.</span>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Nav scroll behavior
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Form (inline CTA section)
+        function handleSubmit(e) {
+            e.preventDefault();
+            document.getElementById('waitlistForm').classList.add('hidden');
+            document.getElementById('formSuccess').classList.add('show');
+        }
+
+        // Modal
+        function openModal() {
+            document.getElementById('waitlistModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('waitlistModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('waitlistModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            document.getElementById('modalForm').classList.add('hidden');
+            document.getElementById('modalSuccess').classList.add('show');
+            setTimeout(closeModal, 2000);
+        }
+    </script>
+</body>
+</html>
