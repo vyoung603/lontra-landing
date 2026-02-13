@@ -296,7 +296,7 @@
         /* ====== SECTION 3: VALUE PROP (text-only, massive whitespace) ====== */
         .value-section {
             padding: 100px 48px 120px;
-            background: var(--cream-warm);
+            background: linear-gradient(160deg, var(--olive-deep) 0%, var(--bark) 40%, #2A2218 100%);
         }
         .value-inner {
             max-width: 800px;
@@ -307,7 +307,7 @@
             font-family: var(--font-serif);
             font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 300;
-            color: var(--olive);
+            color: rgba(255,255,255,0.9);
             margin-bottom: 28px;
             line-height: 1.2;
         }
@@ -316,13 +316,13 @@
             font-size: clamp(1.6rem, 3vw, 2.4rem);
             font-weight: 300;
             line-height: 1.4;
-            color: var(--bark);
+            color: rgba(255,255,255,0.85);
             margin-bottom: 24px;
         }
         .value-inner p {
             font-size: clamp(1.1rem, 1.8vw, 1.3rem);
             line-height: 1.8;
-            color: var(--bark-light);
+            color: rgba(255,255,255,0.7);
             max-width: 660px;
             margin: 0 auto;
             text-wrap: balance;
@@ -491,184 +491,17 @@
             color: var(--bark-light);
         }
 
-        /* App mockup for each step */
-        .how-phone {
-            width: 260px;
-            height: 520px;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 32px 72px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.08);
-            position: relative;
-            display: flex;
-            flex-direction: column;
+        /* App screenshot images for each step */
+        .how-phone-img {
+            width: 220px;
             margin: 0 auto;
         }
-        .how-phone-status {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 20px 8px;
-            font-size: 0.68rem;
-            font-weight: 600;
-        }
-        .how-phone-logo {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .how-phone-content {
-            flex: 1;
-            padding: 8px 16px 12px;
-            display: flex;
-            flex-direction: column;
-        }
-        .how-phone-day {
-            font-size: 0.68rem;
-            margin-bottom: 4px;
-        }
-        .how-phone-greeting {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-        }
-        .how-phone-card {
-            border-radius: 20px;
-            padding: 20px 16px;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        .how-phone-card-title {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        /* Score circles */
-        .how-scores {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: auto;
-            padding: 12px 0 8px;
-        }
-        .how-score {
-            text-align: center;
-        }
-        .how-score-ring {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 4px;
-            position: relative;
-        }
-        .how-score-ring svg {
-            position: absolute;
-            inset: 0;
+        .how-phone-img img {
             width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 24px 56px rgba(0,0,0,0.2)) drop-shadow(0 8px 20px rgba(0,0,0,0.1));
         }
-        .how-score-ring svg circle {
-            fill: none;
-            stroke-width: 3;
-            stroke-linecap: round;
-        }
-        .how-score-num {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            font-weight: 500;
-            position: relative;
-            z-index: 1;
-        }
-        .how-score-label {
-            font-size: 0.55rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            opacity: 0.7;
-        }
-
-        /* Bottom nav bar in phone */
-        .how-phone-tabs {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0 14px;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-        .how-phone-fab {
-            position: absolute;
-            bottom: 52px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #E87A3A;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 16px rgba(232,122,58,0.4);
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 300;
-            z-index: 2;
-        }
-
-        /* Step 1 phone: Butter/cream (lightest) */
-        .phone-step1 {
-            background: linear-gradient(160deg, #F2E4BF 0%, #E8D5A3 40%, #D9C68E 100%);
-        }
-        .phone-step1 .how-phone-status,
-        .phone-step1 .how-phone-logo,
-        .phone-step1 .how-phone-day,
-        .phone-step1 .how-phone-greeting,
-        .phone-step1 .how-phone-card-title,
-        .phone-step1 .how-score-num { color: var(--bark); }
-        .phone-step1 .how-phone-day { color: var(--bark-light); }
-        .phone-step1 .how-phone-card { background: rgba(255,255,255,0.45); }
-        .phone-step1 .how-phone-tabs { color: var(--bark-light); }
-        .phone-step1 .how-score-label { color: var(--bark-light); }
-        .phone-step1 .how-score-ring svg .ring-bg { stroke: rgba(60,47,36,0.08); }
-        .phone-step1 .how-score-ring svg .ring-fg { stroke: var(--olive); }
-
-        /* Step 2 phone: Sand/warm mid tone */
-        .phone-step2 {
-            background: linear-gradient(160deg, #D9CCBB 0%, #C2B49E 40%, #A89880 100%);
-        }
-        .phone-step2 .how-phone-status,
-        .phone-step2 .how-phone-logo,
-        .phone-step2 .how-phone-day,
-        .phone-step2 .how-phone-greeting,
-        .phone-step2 .how-phone-card-title,
-        .phone-step2 .how-score-num { color: var(--bark); }
-        .phone-step2 .how-phone-day { color: var(--bark-mid); }
-        .phone-step2 .how-phone-card { background: rgba(255,255,255,0.35); }
-        .phone-step2 .how-phone-tabs { color: var(--bark-mid); }
-        .phone-step2 .how-score-label { color: var(--bark-mid); }
-        .phone-step2 .how-score-ring svg .ring-bg { stroke: rgba(60,47,36,0.1); }
-        .phone-step2 .how-score-ring svg .ring-fg { stroke: var(--olive); }
-
-        /* Step 3 phone: Olive deep (darkest) */
-        .phone-step3 {
-            background: linear-gradient(160deg, #4A5B3D 0%, #3D4A33 40%, #2E3926 100%);
-        }
-        .phone-step3 .how-phone-status,
-        .phone-step3 .how-phone-logo,
-        .phone-step3 .how-phone-greeting,
-        .phone-step3 .how-score-num { color: rgba(255,255,255,0.9); }
-        .phone-step3 .how-phone-day { color: rgba(255,255,255,0.45); }
-        .phone-step3 .how-phone-card-title { color: rgba(255,255,255,0.85); }
-        .phone-step3 .how-phone-card {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-        .phone-step3 .how-phone-tabs { color: rgba(255,255,255,0.4); }
-        .phone-step3 .how-score-label { color: rgba(255,255,255,0.4); }
-        .phone-step3 .how-score-ring svg .ring-bg { stroke: rgba(255,255,255,0.08); }
-        .phone-step3 .how-score-ring svg .ring-fg { stroke: var(--sage-soft); }
 
         /* ====== SECTION 7: APP SCREENS SHOWCASE ====== */
         .screens-section {
@@ -1256,7 +1089,7 @@
             .how-step { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .how-step.reverse { direction: ltr; }
             .how-step-text { max-width: 100%; margin: 0 auto; }
-            .how-phone { width: 220px; height: 440px; }
+            .how-phone-img { width: 180px; }
             .screens-section { padding: 80px 24px; }
             .screens-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
             .screens-text p { margin: 0 auto; }
@@ -1274,6 +1107,7 @@
             .hero-wordmark { font-size: 4.5rem; }
             .app-screen-card { width: 150px; height: 290px; }
             .phone-lifestyle { min-height: 60vh; }
+            .how-phone-img { width: 160px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1355,53 +1189,8 @@
                     what's driving it.
                 </p>
             </div>
-            <div class="how-phone phone-step1">
-                <div class="how-phone-status">
-                    <span>9:41</span>
-                    <span class="how-phone-logo">R</span>
-                </div>
-                <div class="how-phone-content">
-                    <div class="how-phone-day">Monday, February 9</div>
-                    <div class="how-phone-greeting">Your patterns this week</div>
-                    <div class="how-phone-card">
-                        <div class="how-phone-card-title">How's it going today?</div>
-                        <div style="display:flex;justify-content:center;gap:8px;">
-                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:1rem;">&#128524;</div>
-                            <div style="width:36px;height:36px;border-radius:50%;background:var(--olive);display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px rgba(92,107,79,0.3);">&#128522;</div>
-                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:1rem;">&#128528;</div>
-                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:1rem;">&#128533;</div>
-                        </div>
-                    </div>
-                    <div class="how-scores">
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="17"/></svg>
-                                <span class="how-score-num">88</span>
-                            </div>
-                            <div class="how-score-label">Cognition</div>
-                        </div>
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="22"/></svg>
-                                <span class="how-score-num">84</span>
-                            </div>
-                            <div class="how-score-label">Emotion</div>
-                        </div>
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="12"/></svg>
-                                <span class="how-score-num">91</span>
-                            </div>
-                            <div class="how-score-label">Resilience</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="how-phone-tabs">
-                    <span>Cognition</span>
-                    <span>Emotion</span>
-                    <span style="opacity:1;font-weight:700;">Resilience</span>
-                </div>
-                <div class="how-phone-fab">+</div>
+            <div class="how-phone-img">
+                <img src="phone-screen-1.png" alt="Lontra app showing Cognition, Emotion, and Resilience scores" loading="lazy">
             </div>
         </div>
 
@@ -1418,56 +1207,8 @@
                     coach who knows your playbook.
                 </p>
             </div>
-            <div class="how-phone phone-step2">
-                <div class="how-phone-status">
-                    <span>9:41</span>
-                    <span class="how-phone-logo">R</span>
-                </div>
-                <div class="how-phone-content">
-                    <div class="how-phone-day">Monday, February 9</div>
-                    <div class="how-phone-greeting">In-the-moment support</div>
-                    <div class="how-phone-card">
-                        <div class="how-phone-card-title">I want to feel more focused</div>
-                        <div style="font-size:0.75rem;color:var(--bark-mid);line-height:1.5;margin-top:8px;text-align:left;">
-                            Great goal. Based on your patterns, here's something that's helped you lock in before...
-                        </div>
-                    </div>
-                    <div class="how-phone-card" style="padding:14px 16px;">
-                        <div style="font-size:0.7rem;color:var(--bark-mid);text-align:left;display:flex;align-items:center;gap:8px;">
-                            <span style="width:28px;height:28px;border-radius:50%;background:rgba(92,107,79,0.15);display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;">&#127793;</span>
-                            Grounding exercise (2 min)
-                        </div>
-                    </div>
-                    <div class="how-scores">
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="17"/></svg>
-                                <span class="how-score-num">88</span>
-                            </div>
-                            <div class="how-score-label">Cognition</div>
-                        </div>
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="22"/></svg>
-                                <span class="how-score-num">84</span>
-                            </div>
-                            <div class="how-score-label">Emotion</div>
-                        </div>
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="12"/></svg>
-                                <span class="how-score-num">91</span>
-                            </div>
-                            <div class="how-score-label">Resilience</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="how-phone-tabs">
-                    <span>Cognition</span>
-                    <span>Emotion</span>
-                    <span style="opacity:1;font-weight:700;">Resilience</span>
-                </div>
-                <div class="how-phone-fab">+</div>
+            <div class="how-phone-img">
+                <img src="phone-screen-2.png" alt="Lontra app asking How's it going today?" loading="lazy">
             </div>
         </div>
 
@@ -1484,62 +1225,8 @@
                     both intelligence and experience.
                 </p>
             </div>
-            <div class="how-phone phone-step3">
-                <div class="how-phone-status">
-                    <span>9:41</span>
-                    <span class="how-phone-logo">R</span>
-                </div>
-                <div class="how-phone-content">
-                    <div class="how-phone-day">Monday, February 9</div>
-                    <div class="how-phone-greeting">Your progress</div>
-                    <div class="how-phone-card">
-                        <div class="how-phone-card-title">Resilience: trending up</div>
-                        <div style="display:flex;align-items:flex-end;gap:4px;justify-content:center;margin-top:10px;height:48px;">
-                            <div style="width:12px;height:20px;border-radius:4px;background:rgba(168,184,154,0.3);"></div>
-                            <div style="width:12px;height:26px;border-radius:4px;background:rgba(168,184,154,0.4);"></div>
-                            <div style="width:12px;height:22px;border-radius:4px;background:rgba(168,184,154,0.35);"></div>
-                            <div style="width:12px;height:32px;border-radius:4px;background:rgba(168,184,154,0.5);"></div>
-                            <div style="width:12px;height:28px;border-radius:4px;background:rgba(168,184,154,0.45);"></div>
-                            <div style="width:12px;height:38px;border-radius:4px;background:rgba(168,184,154,0.6);"></div>
-                            <div style="width:12px;height:44px;border-radius:4px;background:var(--sage-soft);"></div>
-                        </div>
-                    </div>
-                    <div class="how-phone-card" style="padding:12px 16px;">
-                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-align:left;display:flex;align-items:center;gap:8px;">
-                            <span style="width:24px;height:24px;border-radius:50%;background:rgba(168,184,154,0.2);display:inline-flex;align-items:center;justify-content:center;font-size:0.7rem;">&#9745;</span>
-                            Clinician reviewed
-                        </div>
-                    </div>
-                    <div class="how-scores">
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="17"/></svg>
-                                <span class="how-score-num">88</span>
-                            </div>
-                            <div class="how-score-label">Cognition</div>
-                        </div>
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="22"/></svg>
-                                <span class="how-score-num">84</span>
-                            </div>
-                            <div class="how-score-label">Emotion</div>
-                        </div>
-                        <div class="how-score">
-                            <div class="how-score-ring">
-                                <svg viewBox="0 0 52 52"><circle class="ring-bg" cx="26" cy="26" r="22"/><circle class="ring-fg" cx="26" cy="26" r="22" stroke-dasharray="138" stroke-dashoffset="12"/></svg>
-                                <span class="how-score-num">91</span>
-                            </div>
-                            <div class="how-score-label">Resilience</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="how-phone-tabs">
-                    <span>Cognition</span>
-                    <span>Emotion</span>
-                    <span style="opacity:1;font-weight:700;">Resilience</span>
-                </div>
-                <div class="how-phone-fab">+</div>
+            <div class="how-phone-img">
+                <img src="phone-screen-3.png" alt="Lontra app showing Resilience trending up, reviewed by clinician" loading="lazy">
             </div>
         </div>
     </section>
