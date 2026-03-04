@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lontra Go-To-Market Strategy | 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2ED;
+  --primary: #4A7C6F;
+  --deep: #2D4A3E;
+  --accent: #6B3A4D;
+  --text: #3A3D3C;
+  --secondary: #6B7B7A;
+  --surface: #FFFFFF;
+  --surface-shadow: 0 2px 24px rgba(45,74,62,0.08);
+  --radius: 14px;
+  --max-w: 1120px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Atkinson Hyperlegible Next', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.sticky-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,242,237,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(74,124,111,0.12);
+  transition: transform 0.3s;
+}
+.sticky-nav.hidden { transform: translateY(-100%); }
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 24px; overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-link {
+  white-space: nowrap; font-size: 0.78rem; font-weight: 600;
+  color: var(--secondary); text-decoration: none;
+  padding: 5px 12px; border-radius: 20px;
+  transition: all 0.2s;
+}
+.nav-link:hover, .nav-link.active { background: var(--primary); color: #fff; }
+.nav-logo { font-weight: 700; color: var(--deep); font-size: 1rem; margin-right: 12px; }
+.section { padding: 80px 24px; position: relative; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section-alt { background: var(--surface); }
+.section-deep { background: var(--deep); color: #fff; }
+.section-deep .section-label { color: rgba(255,255,255,0.5); }
+.section-deep .secondary { color: rgba(255,255,255,0.65); }
+.section-deep h3, .section-deep h4 { color: #fff; }
+.section-accent { background: var(--accent); color: #fff; }
+.section-accent .section-label { color: rgba(255,255,255,0.5); }
+.section-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--primary); margin-bottom: 8px;
+}
+h2 { font-size: 2.4rem; font-weight: 700; line-height: 1.15; margin-bottom: 20px; }
+h3 { font-size: 1.5rem; font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+.secondary { color: var(--secondary); }
+.lead { font-size: 1.15rem; color: var(--secondary); line-height: 1.6; max-width: 680px; }
+.card {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--surface-shadow); padding: 32px; margin-bottom: 20px;
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 20px; }
+.card-sm { padding: 24px; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 20px; margin: 32px 0; }
+.stat-block { flex: 1; min-width: 160px; }
+.stat-num { font-size: 2.8rem; font-weight: 700; color: var(--primary); line-height: 1; }
+.section-deep .stat-num { color: #fff; }
+.section-accent .stat-num { color: #fff; }
+.stat-label { font-size: 0.85rem; color: var(--secondary); margin-top: 4px; }
+.section-deep .stat-label { color: rgba(255,255,255,0.6); }
+.table-wrap { overflow-x: auto; margin: 24px 0; border-radius: var(--radius); box-shadow: var(--surface-shadow); }
+table { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 0.9rem; }
+th { background: var(--deep); color: #fff; text-align: left; padding: 14px 16px; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; }
+td { padding: 12px 16px; border-bottom: 1px solid rgba(74,124,111,0.08); color: var(--text); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(74,124,111,0.03); }
+.tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 600;
+  padding: 3px 10px; border-radius: 20px; margin: 2px 4px 2px 0;
+}
+.tag-green { background: rgba(74,124,111,0.12); color: var(--primary); }
+.tag-accent { background: rgba(107,58,77,0.12); color: var(--accent); }
+.tag-deep { background: rgba(45,74,62,0.1); color: var(--deep); }
+.persona-card {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--surface-shadow); overflow: hidden;
+}
+.persona-header { padding: 32px 32px 0; display: flex; gap: 24px; align-items: flex-start; }
+.persona-avatar {
+  width: 88px; height: 88px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: 700; color: #fff;
+}
+.persona-avatar-a { background: linear-gradient(135deg, var(--primary), var(--deep)); }
+.persona-avatar-b { background: linear-gradient(135deg, var(--accent), #8B4D63); }
+.persona-meta h3 { margin-bottom: 4px; }
+.persona-body { padding: 24px 32px 32px; }
+.persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.persona-section h4 { font-size: 0.85rem; color: var(--primary); margin-bottom: 6px; }
+.persona-section ul { list-style: none; font-size: 0.88rem; }
+.persona-section li { padding: 3px 0; padding-left: 16px; position: relative; }
+.persona-section li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); opacity: 0.4; }
+.bar-chart { margin: 24px 0; }
+.bar-row { display: flex; align-items: center; margin-bottom: 10px; gap: 12px; }
+.bar-label { width: 120px; font-size: 0.82rem; font-weight: 600; text-align: right; flex-shrink: 0; }
+.bar-track { flex: 1; height: 28px; background: rgba(74,124,111,0.08); border-radius: 14px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 14px; display: flex; align-items: center; padding-left: 12px; font-size: 0.75rem; font-weight: 600; color: #fff; min-width: 40px; transition: width 1s ease; }
+.bar-green { background: linear-gradient(90deg, var(--primary), var(--deep)); }
+.bar-accent { background: linear-gradient(90deg, var(--accent), #8B4D63); }
+.bar-mixed { background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.donut-container { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; justify-content: center; margin: 32px 0; }
+.donut-legend { font-size: 0.88rem; }
+.donut-legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+.donut-legend-swatch { width: 14px; height: 14px; border-radius: 4px; }
+.timeline { position: relative; padding: 24px 0; }
+.timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 3px; background: rgba(74,124,111,0.15); border-radius: 2px; }
+.tl-item { position: relative; padding: 0 0 32px 56px; }
+.tl-dot { position: absolute; left: 12px; top: 4px; width: 19px; height: 19px; border-radius: 50%; border: 3px solid var(--primary); background: var(--bg); }
+.tl-item.active .tl-dot { background: var(--primary); }
+.tl-phase { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
+.tl-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0; }
+.tl-desc { font-size: 0.88rem; color: var(--secondary); }
+.gantt { margin: 32px 0; overflow-x: auto; }
+.gantt-grid { display: grid; grid-template-columns: 160px repeat(6, 1fr); gap: 0; min-width: 700px; }
+.gantt-header { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 8px; text-align: center; color: var(--secondary); border-bottom: 2px solid rgba(74,124,111,0.15); }
+.gantt-label { font-size: 0.82rem; font-weight: 600; padding: 12px 8px; border-bottom: 1px solid rgba(74,124,111,0.08); display: flex; align-items: center; }
+.gantt-cell { padding: 12px 4px; border-bottom: 1px solid rgba(74,124,111,0.08); display: flex; align-items: center; }
+.gantt-bar { height: 24px; border-radius: 12px; width: 100%; }
+.g-green { background: var(--primary); opacity: 0.8; }
+.g-deep { background: var(--deep); opacity: 0.8; }
+.g-accent { background: var(--accent); opacity: 0.8; }
+.g-light { background: var(--primary); opacity: 0.25; }
+.dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; margin: 24px 0; }
+.dash-card {
+  background: var(--surface); border-radius: 12px; padding: 20px;
+  box-shadow: var(--surface-shadow); text-align: center;
+}
+.dash-value { font-size: 2rem; font-weight: 700; color: var(--deep); }
+.dash-label { font-size: 0.78rem; color: var(--secondary); margin-top: 2px; }
+.dash-trend { font-size: 0.78rem; font-weight: 600; margin-top: 4px; }
+.trend-up { color: var(--primary); }
+.trend-flat { color: var(--secondary); }
+.callout {
+  border-left: 4px solid var(--primary); background: rgba(74,124,111,0.06);
+  padding: 20px 24px; border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 24px 0; font-size: 0.95rem;
+}
+.callout-accent { border-left-color: var(--accent); background: rgba(107,58,77,0.06); }
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 24px 80px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--primary) 50%, var(--bg) 100%);
+  color: #fff; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(107,58,77,0.2) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(74,124,111,0.3) 0%, transparent 50%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 780px; }
+.hero h1 { font-size: 3.6rem; font-weight: 700; line-height: 1.08; margin-bottom: 20px; }
+.hero .lead { color: rgba(255,255,255,0.8); margin: 0 auto 32px; font-size: 1.25rem; }
+.hero-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 8px 20px; border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.3); margin-bottom: 24px;
+}
+.hero-cta {
+  display: inline-block; background: #fff; color: var(--deep);
+  padding: 14px 36px; border-radius: 28px; font-weight: 700;
+  font-size: 0.95rem; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.quote-block {
+  font-size: 1.4rem; font-weight: 500; font-style: italic;
+  max-width: 600px; margin: 32px auto; text-align: center;
+  line-height: 1.5; color: var(--deep);
+}
+.section-deep .quote-block { color: #fff; }
+.phase-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 20px;
+  background: var(--primary); color: #fff; margin-bottom: 12px;
+}
+@media print {
+  .sticky-nav { display: none; }
+  .section { padding: 40px 24px; break-inside: avoid; }
+  .hero { min-height: auto; padding: 60px 24px; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  .persona-header { flex-direction: column; align-items: center; text-align: center; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .stat-num { font-size: 2rem; }
+  .bar-label { width: 80px; font-size: 0.75rem; }
+  .section { padding: 56px 16px; }
+  .card { padding: 24px 20px; }
+}
+ul.styled { list-style: none; }
+ul.styled li { padding: 6px 0 6px 20px; position: relative; font-size: 0.92rem; }
+ul.styled li::before { content: ''; position: absolute; left: 0; top: 14px; width: 7px; height: 7px; border-radius: 50%; background: var(--primary); }
+.section-deep ul.styled li::before { background: rgba(255,255,255,0.5); }
+ol.styled { padding-left: 20px; }
+ol.styled li { padding: 4px 0; font-size: 0.92rem; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+.icon-circle {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+}
+.icon-green { background: rgba(74,124,111,0.12); color: var(--primary); }
+.icon-accent { background: rgba(107,58,77,0.12); color: var(--accent); }
+.action-list { counter-reset: actions; list-style: none; }
+.action-item {
+  counter-increment: actions; padding: 20px 20px 20px 64px;
+  position: relative; background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--surface-shadow); margin-bottom: 12px;
+}
+.action-item::before {
+  content: counter(actions); position: absolute; left: 16px; top: 18px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--primary); color: #fff; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="sticky-nav" id="nav">
+<div class="nav-inner">
+  <span class="nav-logo">Lontra</span>
+  <a href="#opportunity" class="nav-link">Opportunity</a>
+  <a href="#personas" class="nav-link">Personas</a>
+  <a href="#positioning" class="nav-link">Positioning</a>
+  <a href="#channels" class="nav-link">Channels</a>
+  <a href="#content" class="nav-link">Content</a>
+  <a href="#influencers" class="nav-link">Influencers</a>
+  <a href="#paid" class="nav-link">Paid Media</a>
+  <a href="#metrics" class="nav-link">Metrics</a>
+  <a href="#budget" class="nav-link">Budget</a>
+  <a href="#ask" class="nav-link">The Ask</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+  <div class="hero-badge">Go-To-Market Strategy / March 2026</div>
+  <h1>Proactive mental fitness.<br>Resilience you can measure.</h1>
+  <p class="lead">Lontra helps women build real resilience and stress capacity with clinically validated assessments, an AI coach, and proof you're getting stronger. This is the scrappy GTM plan: 1 hire, 2 channels, AI-powered ops, $150K.</p>
+  <a href="#opportunity" class="hero-cta">Explore the Strategy</a>
+</div>
+</section>
+
+<!-- ===================== 1. OPPORTUNITY ===================== -->
+<section class="section" id="opportunity">
+<div class="section-inner reveal">
+  <div class="section-label">Section 01</div>
+  <h2>The Opportunity</h2>
+  <p class="lead">There's a $10B gap between meditation apps and therapy. Millions of women want to build resilience proactively, not just cope reactively. Nobody is giving them real science to do it.</p>
+
+  <div class="stat-row">
+    <div class="stat-block"><div class="stat-num">$10.2B</div><div class="stat-label">Global mental wellness app market, 2026 (Precedence Research)</div></div>
+    <div class="stat-block"><div class="stat-num">21.4%</div><div class="stat-label">CAGR through 2030</div></div>
+    <div class="stat-block"><div class="stat-num">76%</div><div class="stat-label">U.S. adults report stress symptoms (APA, 2025)</div></div>
+    <div class="stat-block"><div class="stat-num">59%</div><div class="stat-label">Say they'd use AI for mental health support (Deloitte, 2025)</div></div>
+  </div>
+</div>
+</section>
+
+<section class="section section-alt">
+<div class="section-inner reveal">
+  <h3>Nobody's Building Proactive Mental Fitness</h3>
+  <p class="secondary" style="margin-bottom:24px;">Content libraries. Crisis care. Chatbots. None of them measure resilience, train it, or prove improvement.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th style="width:160px">Feature</th><th>Lontra</th><th>Calm</th><th>Headspace</th><th>BetterHelp</th><th>Woebot</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Validated brain assessments</strong></td><td><span class="tag tag-green">Proprietary (Total Brain)</span></td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+      <tr><td><strong>Assess-train-reassess loop</strong></td><td><span class="tag tag-green">Baseline, coach, measure progress</span></td><td>No</td><td>No</td><td>No structured measurement</td><td>No</td></tr>
+      <tr><td><strong>Cognitive + emotional resilience</strong></td><td><span class="tag tag-green">Clinically scored, trackable</span></td><td>No</td><td>No</td><td>Therapist-subjective</td><td>No</td></tr>
+      <tr><td><strong>Clinician-guided AI</strong></td><td><span class="tag tag-green">Yes</span></td><td>No</td><td>No</td><td>No (human only)</td><td>Generic CBT</td></tr>
+      <tr><td><strong>Clinical oversight</strong></td><td><span class="tag tag-green">Clinician-in-the-loop</span></td><td>No</td><td>No</td><td>Yes (human)</td><td>Limited</td></tr>
+      <tr><td><strong>Pattern recognition</strong></td><td><span class="tag tag-green">Surfaces thought loops</span></td><td>No</td><td>No</td><td>Limited</td><td>Some</td></tr>
+      <tr><td><strong>Remembers you</strong></td><td><span class="tag tag-green">Full context memory</span></td><td>No</td><td>No</td><td>Therapist dependent</td><td>Limited</td></tr>
+      <tr><td><strong>Available 24/7</strong></td><td><span class="tag tag-green">Always</span></td><td>Content only</td><td>Content only</td><td>Scheduled</td><td>Yes</td></tr>
+      <tr><td><strong>Measurable progress</strong></td><td><span class="tag tag-green">Real scores, real baselines</span></td><td>Streaks only</td><td>Streaks only</td><td>Therapist notes</td><td>No</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout">
+    <strong>Why now?</strong> Women are investing in their health proactively. AI acceptance is mainstream. And the science of resilience can finally be measured, trained, and proven with validated instruments. Lontra has those instruments. Nobody else does.
+  </div>
+
+  <h4 style="margin-top:32px;">Lontra's Unfair Advantages</h4>
+  <div class="card-grid" style="margin-top:16px;">
+    <div class="card card-sm">
+      <div class="icon-circle icon-green"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg></div>
+      <h4>Proprietary Resilience Assessments</h4>
+      <p class="secondary" style="font-size:0.88rem">Clinically validated instruments from Total Brain. Emotional resilience, cognitive resilience, self-regulation. Real scores, not mood journals. No other consumer app has these.</p>
+    </div>
+    <div class="card card-sm">
+      <div class="icon-circle icon-green"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4m-9-9h4m14 0h4"/></svg></div>
+      <h4>Assess, Train, Reassess</h4>
+      <p class="secondary" style="font-size:0.88rem">Measure your baseline. Build resilience with personalized coaching. Reassess to prove progress. 30-second to 3-minute activities. This loop is the product and the moat.</p>
+    </div>
+    <div class="card card-sm">
+      <div class="icon-circle icon-green"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 21V3m8 0v18"/></svg></div>
+      <h4>Clinician-Guided AI</h4>
+      <p class="secondary" style="font-size:0.88rem">Built on SonderMind's clinical intelligence. Licensed clinician oversight behind the scenes. Real science, validated assessments, continuous safety checks.</p>
+    </div>
+    <div class="card card-sm">
+      <div class="icon-circle icon-accent"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <h4>Durable Resilience</h4>
+      <p class="secondary" style="font-size:0.88rem">Not just feeling better today. Building stress capacity that compounds: better mental health, better behavioral health, a stronger mind for the long run. Measured, not assumed.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-accent" style="margin-top:24px;">
+    <strong>The moat:</strong> Content library (Calm). Chatbot (Woebot). Expensive humans (BetterHelp). Lontra has proprietary clinical instruments, a training loop that builds measurable resilience, and clinician oversight. You cannot bolt ChatGPT onto a meditation app and replicate this.
+  </div>
+</div>
+</section>
+
+<!-- ===================== 2. PERSONAS ===================== -->
+<section class="section section-deep" id="personas">
+<div class="section-inner reveal">
+  <div class="section-label">Section 02</div>
+  <h2>Who We're Building For</h2>
+  <p class="lead" style="color:rgba(255,255,255,0.7);">Two personas. One shared truth: they're high-functioning, self-aware, and ready to invest in their resilience. They don't need to be fixed. They want to be proactively stronger.</p>
+</div>
+</section>
+
+<section class="section section-alt">
+<div class="section-inner">
+  <!-- PERSONA A: RILEY -->
+  <div class="persona-card reveal" style="margin-bottom:32px;">
+    <div class="persona-header">
+      <div class="persona-avatar persona-avatar-a">R</div>
+      <div class="persona-meta">
+        <h3>Riley, "The Self-Aware Striver"</h3>
+        <p class="secondary">Late Gen Z, Female, Early career professional, works from home</p>
+        <div style="margin-top:8px;">
+          <span class="tag tag-green">Primary Persona</span>
+          <span class="tag tag-deep">Tech-forward, health-conscious</span>
+          <span class="tag tag-deep">"I just need to get through this week lol"</span>
+        </div>
+      </div>
+    </div>
+    <div class="persona-body">
+      <div class="persona-grid">
+        <div class="persona-section">
+          <h4>Who She Is</h4>
+          <ul>
+            <li>Self-aware, intellectually curious, ambitious but stretched thin</li>
+            <li>Fashionable, wants to appear put together but totally isn't</li>
+            <li>Knows her patterns (spirals, skipped meals, tension) but can't interrupt them in real time</li>
+            <li>Has read the books, saved the posts, tried the apps</li>
+            <li>Aspires to be "Type A" but knows she'll never be - and is tired of pretending</li>
+            <li>Not in crisis. Just tired of subtle spirals compounding</li>
+          </ul>
+        </div>
+        <div class="persona-section">
+          <h4>Daily Reality</h4>
+          <ul>
+            <li>Checks Slack before getting out of bed</li>
+            <li>Back-to-back meetings, eats at desk, shoulders tight by 2 PM</li>
+            <li>4 minutes between calls - not enough to journal, meditate, or think</li>
+            <li>Puts phone on DND to block out noise when overwhelmed</li>
+            <li>Watches healthy recipe TikToks while eating takeout</li>
+            <li>Doom-scrolls at night, knows it makes things worse, keeps doing it</li>
+            <li>Has done 10+ social media detoxes but keeps coming back</li>
+          </ul>
+        </div>
+        <div class="persona-section">
+          <h4>Media Diet</h4>
+          <ul>
+            <li><strong>TikTok:</strong> Mental health tips, lofi study streams, "things my therapist said," healthy-ish recipes</li>
+            <li><strong>Instagram:</strong> @drjuliesmith, wellness aesthetics, mood boards, journaling inspo</li>
+            <li><strong>Podcasts:</strong> Anything she can half-listen to while working</li>
+            <li><strong>Music:</strong> Lofi beats while working, Charli xcx on weekends</li>
+            <li><strong>Reads:</strong> Screenshots advice posts to "read later" (never does)</li>
+          </ul>
+        </div>
+        <div class="persona-section">
+          <h4>Pain Points</h4>
+          <ul>
+            <li>Has to figure out on her own whether to push through, unpack, or act on a feeling</li>
+            <li>Meditation apps feel disconnected from her actual problems</li>
+            <li>ChatGPT is okay but generic, amnesiac, and just agrees with her</li>
+            <li>Therapy feels like too big a commitment (and she "should be handling this")</li>
+            <li>Everything requires too much self-interpretation when she's already overloaded</li>
+            <li>Wears a smartwatch but doesn't know what to do with the data</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:20px;">
+        <strong>The Download Moment:</strong> Riley is scrolling TikTok and sees a creator talk about "building stress capacity" instead of just managing anxiety. The creator mentions taking a 60-second resilience assessment and watching her score improve over two weeks. Riley taps through, takes the assessment, sees her score. She thinks: "I've never measured this before. I want to get better at this." She downloads Lontra because it feels like investing in herself, not fixing something broken.
+      </div>
+      <div style="margin-top:16px;">
+        <h4>Words That Resonate</h4>
+        <span class="tag tag-green">Build your resilience</span>
+        <span class="tag tag-green">Stress capacity</span>
+        <span class="tag tag-green">Getting stronger</span>
+        <span class="tag tag-green">Not therapy</span>
+        <span class="tag tag-green">Proactive mental fitness</span>
+        <span class="tag tag-green">See your progress</span>
+        <span class="tag tag-green">Invest in yourself</span>
+      </div>
+      <div style="margin-top:12px;">
+        <h4>What Makes Her Stay</h4>
+        <p class="secondary" style="font-size:0.88rem;">After 3 days, Lontra says: "I've noticed your stress response peaks mid-afternoon on days you skip lunch. Here's how to build a buffer." Riley stares at the screen. Nobody has ever connected those dots for her. A week later, she takes the resilience assessment and scores a 58. Two weeks later: 67. She's not just coping. She's measurably more resilient. That's the moment she moves from "trying an app" to "this is actually making me stronger."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONA B: JANE -->
+  <div class="persona-card reveal">
+    <div class="persona-header">
+      <div class="persona-avatar persona-avatar-b">J</div>
+      <div class="persona-meta">
+        <h3>Jane, "The Proactive Protector"</h3>
+        <p class="secondary">44, Female, Investment professional, Kids 10 and 14, Health-conscious</p>
+        <div style="margin-top:8px;">
+          <span class="tag tag-accent">Secondary Persona</span>
+          <span class="tag tag-deep">Oura + Peloton + Eight Sleep</span>
+          <span class="tag tag-deep">"I don't need therapy. I need training."</span>
+        </div>
+      </div>
+    </div>
+    <div class="persona-body">
+      <div class="persona-grid">
+        <div class="persona-section">
+          <h4>Who She Is</h4>
+          <ul>
+            <li>Has spent a decade+ being intentional about physical health</li>
+            <li>Runs, rides Peloton, tracks sleep with Oura, just bought an Eight Sleep</li>
+            <li>Kids are more independent now - she finally has space to think about herself</li>
+            <li>Menopause is on the horizon; watched her mom's memory start to slip</li>
+            <li>Not anxious or depressed - confident, in control most of the time</li>
+            <li>A planner, a preventer. Gets ahead of problems.</li>
+          </ul>
+        </div>
+        <div class="persona-section">
+          <h4>Daily Reality</h4>
+          <ul>
+            <li>6:15 AM, coffee and quiet morning scroll before the house wakes up</li>
+            <li>Morning run, AirPods in, back for school logistics</li>
+            <li>Full day of work - investment professional, meetings, decisions</li>
+            <li>Evening: family time, then solo wind-down with Oura data review</li>
+            <li>Has optimized sleep, nutrition, fitness - but never her brain</li>
+            <li>Screenshots health articles to revisit later, texts friend group about them</li>
+          </ul>
+        </div>
+        <div class="persona-section">
+          <h4>Media Diet</h4>
+          <ul>
+            <li><strong>LinkedIn:</strong> Follows health-focused VCs, longevity researchers, women's health advocates</li>
+            <li><strong>Podcasts:</strong> Peter Attia's The Drive, Rich Roll, wellness-meets-science</li>
+            <li><strong>Instagram:</strong> Fitness, longevity content, clean aesthetic wellness</li>
+            <li><strong>Reads:</strong> Outlive (Attia), research papers, health newsletters</li>
+            <li><strong>Tracks:</strong> Sleep, HRV, recovery scores, exercise data</li>
+          </ul>
+        </div>
+        <div class="persona-section">
+          <h4>Pain Points</h4>
+          <ul>
+            <li>Realized she's optimized everything except her brain</li>
+            <li>Fears cognitive decline - "mom brain" might not just be a phase</li>
+            <li>Headspace/Calm are too passive - no measurement, no progress signal</li>
+            <li>Lumosity felt gimmicky and disconnected from her health stack</li>
+            <li>Journaling is too unstructured - felt like homework with no feedback</li>
+            <li>Wants a "Peloton for her brain" - structured, measurable, progressive</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-accent" style="margin-top:20px;">
+        <strong>The Download Moment:</strong> It's 6:15 AM. Jane is scrolling LinkedIn over coffee. She sees a post from a peer she respects about menopause and cognitive decline, linking to neuroplasticity research. She thinks about her mom. She thinks about the word she couldn't find in yesterday's meeting. She screenshots the post. Then she sees a Lontra ad in her feed: "Guided by real clinicians. Tracks your baselines. Shows your progress." She downloads it immediately because it sounds like what she already does for her body, but for her brain.
+      </div>
+      <div style="margin-top:16px;">
+        <h4>Words That Resonate</h4>
+        <span class="tag tag-accent">Brain health</span>
+        <span class="tag tag-accent">Measurable progress</span>
+        <span class="tag tag-accent">Clinician-guided</span>
+        <span class="tag tag-accent">Proactive, not reactive</span>
+        <span class="tag tag-accent">Neuroplasticity</span>
+        <span class="tag tag-accent">Train your mind</span>
+        <span class="tag tag-accent">Data-driven</span>
+      </div>
+      <div style="margin-top:12px;">
+        <h4>What Makes Her Stay</h4>
+        <p class="secondary" style="font-size:0.88rem;">After 2 weeks, Jane retakes the emotional resilience assessment. Her score improved from 62 to 71. Lontra shows her the trend: "Your resilience scores improve on days after 7+ hours of sleep and post-run. Your cognitive flexibility is up 15% since you started." Jane sees brain health reflected in data for the first time. This isn't a meditation app. This is the assess-train-reassess loop she didn't know she needed. She upgrades to annual immediately.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 3. BRAND POSITIONING ===================== -->
+<section class="section" id="positioning">
+<div class="section-inner reveal">
+  <div class="section-label">Section 03</div>
+  <h2>Brand Positioning</h2>
+  <p class="lead">Lontra is proactive mental fitness. Measure your resilience. Build your stress capacity. Prove you're getting stronger. Not coping. Growing.</p>
+
+  <div class="two-col" style="margin-top:40px;">
+    <div>
+      <h4>Brand Voice</h4>
+      <ul class="styled">
+        <li><strong>Warm but intelligent.</strong> Like a wise friend who reads the research. Never clinical, never condescending.</li>
+        <li><strong>Grounded, not flashy.</strong> Golden hour, not neon dashboards.</li>
+        <li><strong>Science you can feel.</strong> Real assessments, real resilience scores. The science is the foundation; the experience is human.</li>
+        <li><strong>Proactive, not reactive.</strong> You're building resilience and stress capacity. Not fixing. Growing. We measure it so you can see.</li>
+        <li><strong>Clinician-backed, never clinical.</strong> Validated instruments. Clinician oversight. Warm delivery.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>How We're Different</h4>
+      <div class="card card-sm" style="margin-bottom:12px;padding:16px 20px;">
+        <span class="tag tag-deep">Calm / Headspace</span>
+        <p style="font-size:0.85rem;margin-top:4px;">Content libraries. No assessment, no measurement. You listen. Lontra measures your resilience and proves it's growing.</p>
+      </div>
+      <div class="card card-sm" style="margin-bottom:12px;padding:16px 20px;">
+        <span class="tag tag-deep">BetterHelp</span>
+        <p style="font-size:0.85rem;margin-top:4px;">Human therapy. Expensive, scheduled, no structured resilience measurement. Lontra is proactive, 24/7, and a fraction of the cost.</p>
+      </div>
+      <div class="card card-sm" style="margin-bottom:12px;padding:16px 20px;">
+        <span class="tag tag-deep">ChatGPT</span>
+        <p style="font-size:0.85rem;margin-top:4px;">Generic AI. No clinical instruments, no baselines, amnesiac. Lontra has proprietary assessments, remembers your patterns, and builds measurable resilience.</p>
+      </div>
+      <div class="card card-sm" style="margin-bottom:12px;padding:16px 20px;">
+        <span class="tag tag-deep">Woebot</span>
+        <p style="font-size:0.85rem;margin-top:4px;">Scripted CBT. No validated assessments, no progress measurement. A generation behind.</p>
+      </div>
+      <div class="card card-sm" style="padding:16px 20px;">
+        <span class="tag tag-deep">Lumosity</span>
+        <p style="font-size:0.85rem;margin-top:4px;">Gamified reaction-time tasks. No emotional component, no coaching, no clinical grounding. Lontra measures real resilience, not just speed.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section section-accent">
+<div class="section-inner reveal" style="text-align:center;">
+  <div class="section-label">Tagline Concepts (pick one to test)</div>
+  <div class="quote-block" style="color:#fff;font-size:1.8rem;max-width:700px;">
+    A: "When stress goes haywire, you rewire."
+  </div>
+  <div class="quote-block" style="color:#fff;font-size:1.5rem;max-width:700px;margin-top:20px;">
+    B: "Life goes haywire. Lontra helps you rewire."
+  </div>
+  <div class="quote-block" style="color:#fff;font-size:1.5rem;max-width:700px;margin-top:20px;">
+    C: "Haywire happens. Rewire back stronger."
+  </div>
+  <div class="quote-block" style="color:#fff;font-size:1.5rem;max-width:700px;margin-top:20px;">
+    D: "Resilience you can measure. Progress you can feel."
+  </div>
+  <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:24px auto 0;font-size:0.92rem;">A-C play on the haywire/rewire tension. D is the clean alternative. Test all four in paid creative week one. Let the data pick.</p>
+
+  <div class="card-grid" style="margin-top:48px; text-align:left;">
+    <div class="card card-sm">
+      <h4 style="color:var(--deep);">Riley: "Build the resilience you wish you had yesterday."</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Proactive, aspirational. She's investing in herself, not fixing herself. Lontra measures her resilience and shows her it's growing. TikTok, IG, App Store.</p>
+    </div>
+    <div class="card card-sm">
+      <h4 style="color:var(--deep);">Jane: "Mental fitness, measured."</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Bridges her fitness identity to resilience. Validated assessments, progress tracking, data she can act on. The "Peloton for your mind." LinkedIn, podcasts.</p>
+    </div>
+    <div class="card card-sm">
+      <h4 style="color:var(--deep);">Universal: "Real science. Real progress. Minutes a day."</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Both personas. Not wellness fluff. Assess, train, reassess. Test in week one paid creative.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 4. CHANNEL STRATEGY ===================== -->
+<section class="section section-deep" id="channels">
+<div class="section-inner reveal">
+  <div class="section-label">Section 04</div>
+  <h2>The Channel Strategy</h2>
+  <p class="lead" style="color:rgba(255,255,255,0.7);">Two channels. Not six. Meta is the workhorse. TikTok is the swing bet. Everything else is noise until unit economics prove out.</p>
+  <div class="stat-row">
+    <div class="stat-block"><div class="stat-num">2</div><div class="stat-label">Channels we actually run well</div></div>
+    <div class="stat-block"><div class="stat-num">3K</div><div class="stat-label">Waitlist target before launch</div></div>
+    <div class="stat-block"><div class="stat-num">10K</div><div class="stat-label">Downloads target, month 1</div></div>
+    <div class="stat-block"><div class="stat-num">50K</div><div class="stat-label">Downloads target, month 3</div></div>
+  </div>
+  <div class="callout" style="border-left-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;margin-top:24px;">
+    <strong>Why only 2?</strong> One person can do two channels well or six poorly. Meta: both personas, best creative testing, best retargeting. TikTok: Riley lives there, organic reach still possible. Prove CPA on these two, then expand.
+  </div>
+</div>
+</section>
+
+<!-- PHASE 0 -->
+<section class="section section-alt">
+<div class="section-inner reveal">
+  <div class="phase-badge">Phase 0: Pre-Launch (4 weeks before launch)</div>
+  <h3>Build the Waitlist, Seed the Narrative</h3>
+
+  <div class="two-col" style="margin-top:24px;">
+    <div>
+      <h4>Waitlist Strategy: 3K Signups (realistic for our budget)</h4>
+      <ul class="styled">
+        <li><strong>One landing page, one CTA:</strong> "How resilient are you? Find out in 60 seconds."</li>
+        <li><strong>Assessment funnel:</strong> 60-second mini resilience assessment (simplified from Total Brain). Email to unlock results. Shareable score cards. This IS the waitlist engine and a product taste.</li>
+        <li><strong>Incentive:</strong> First 500 signups get 3 months free + "Founding Member" badge</li>
+        <li><strong>$2-3K pre-launch ad spend:</strong> Meta ads driving to the assessment quiz. Test 3-4 creative concepts. Learn which messaging converts before launch day.</li>
+        <li><strong>Val's LinkedIn:</strong> Founder story thread. This is free and high-leverage. AI agent drafts, Val personalizes and posts.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Content Seeding Calendar (what 2 people can do)</h4>
+      <div class="card card-sm" style="margin-bottom:12px;">
+        <div class="tag tag-green">Week 1-2</div>
+        <p style="font-size:0.85rem;margin-top:6px;"><strong>Resilience quiz goes live.</strong> $50-100/day Meta ads driving to it. Val posts founder story thread on LinkedIn (AI-drafted, Val-personalized). Start creator DMs.</p>
+      </div>
+      <div class="card card-sm" style="margin-bottom:12px;">
+        <div class="tag tag-green">Week 2-3</div>
+        <p style="font-size:0.85rem;margin-top:6px;"><strong>Growth Lead films 3 short-form videos:</strong> "What building resilience actually looks like," "The mental fitness routine I wish I had sooner," "Why I stopped trying to 'fix' my stress and started training for it." Posted on TikTok + IG Reels. Proactive, aspirational, real. AI writes captions.</p>
+      </div>
+      <div class="card card-sm">
+        <div class="tag tag-green">Week 3-4</div>
+        <p style="font-size:0.85rem;margin-top:6px;"><strong>First 5 creators post:</strong> gifted access creators share honest reactions. Growth Lead boosts best-performing creator content via TikTok Spark Ads ($50-100/post). Build momentum into launch week.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4 style="margin-top:32px;">Influencer Outreach (Pre-Launch) -- Val sends 15 DMs</h4>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Tier</th><th>Target</th><th>Pitch</th><th>Deal</th></tr></thead>
+    <tbody>
+      <tr><td>Micro (10K-100K)</td><td>10 mental health / wellness / Gen Z creators</td><td>"We're launching an AI mental fitness tool built on real brain science. Want to be a founding creator?"</td><td>Gifted 6-month access + $500 flat + 10% affiliate</td></tr>
+      <tr><td>Nano (5K-15K)</td><td>5 therapy-curious / journaling / self-growth accounts</td><td>"Would you try this for 2 weeks and share honestly?"</td><td>Gifted access only (41% of nanos accept product-only)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <strong>Why 15, not 100?</strong> Val and the Growth Lead can manage 15 creator relationships well. AI agent identifies targets, drafts personalized DMs, and tracks responses. Val sends from her personal account. Founder DMs convert 3-5x better than agency outreach.
+  </div>
+
+  <h4 style="margin-top:24px;">PR Strategy: Leverage SonderMind (no agency budget)</h4>
+  <div class="card-grid">
+    <div class="card card-sm">
+      <h4>Free / Internal PR Plays</h4>
+      <ul class="styled">
+        <li><strong>SonderMind PR team:</strong> Leverage existing media relationships. "SonderMind launches consumer AI coach" is a story they can pitch.</li>
+        <li><strong>Val's LinkedIn:</strong> Founder story thread. Free. High-leverage. AI-drafted, Val-personalized.</li>
+        <li><strong>Product Hunt launch:</strong> Free. Great for early adopter tech audience.</li>
+        <li><strong>HARO / Qwoted:</strong> Respond to journalist queries about AI + mental health. Free. AI agent monitors and drafts responses.</li>
+      </ul>
+    </div>
+    <div class="card card-sm">
+      <h4>Press Targets (organic pitches, no retainer)</h4>
+      <ul class="styled">
+        <li>TechCrunch: "SonderMind launches AI mental fitness tool with real clinical backing"</li>
+        <li>Fast Company: "The app that measures your resilience and proves you're getting stronger"</li>
+        <li>Well+Good, mindbodygreen: wellness + resilience science angle</li>
+        <li>Refinery29: Gen Z mental health + AI angle</li>
+      </ul>
+      <p style="font-size:0.82rem;color:var(--secondary);margin-top:8px;">Val or Growth Lead pitches these directly. AI agent drafts the pitches. No agency needed for 4-5 targeted press emails.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PHASE 1 -->
+<section class="section">
+<div class="section-inner reveal">
+  <div class="phase-badge">Phase 1: Launch Week</div>
+  <h3>Maximum Impact in 7 Days</h3>
+
+  <h4 style="margin-top:24px;">App Store Optimization (ASO)</h4>
+  <div class="card" style="margin-bottom:24px;">
+    <div class="two-col">
+      <div>
+        <p style="font-size:0.85rem;margin-bottom:8px;"><strong>App Title:</strong> Lontra: Your Mind, Understood</p>
+        <p style="font-size:0.85rem;margin-bottom:8px;"><strong>Subtitle:</strong> AI Mental Fitness, Guided by Clinicians</p>
+        <p style="font-size:0.85rem;margin-bottom:12px;"><strong>Primary Keywords:</strong> mental health, AI coach, mental fitness, anxiety relief, therapy alternative, pattern recognition, mood tracking, clinician-guided</p>
+        <p style="font-size:0.85rem;"><strong>Category:</strong> Health & Fitness (primary), Lifestyle (secondary)</p>
+      </div>
+      <div>
+        <p style="font-size:0.85rem;margin-bottom:8px;"><strong>Screenshot Strategy (6 frames):</strong></p>
+        <ol class="styled">
+          <li>"Your mind, understood" -- hero screen with warm brand visual</li>
+          <li>AI coaching conversation showing pattern recognition</li>
+          <li>"See the patterns you can't" -- insight moment</li>
+          <li>In-the-moment support (breathing, grounding)</li>
+          <li>"Guided by real clinicians" -- trust/safety screen</li>
+          <li>Progress over time -- "You're steadier than last week"</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <h4>Launch Day: What Actually Happens (2 humans + AI)</h4>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Time</th><th>Channel</th><th>Content</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td>6:00 AM ET</td><td>App Store</td><td>App goes live. ASO optimized listing.</td><td>Engineering</td></tr>
+      <tr><td>7:00 AM</td><td>Email</td><td>Waitlist notification: "You're in." with personal download link. Pre-written, auto-sent.</td><td>Growth Lead (pre-built)</td></tr>
+      <tr><td>8:00 AM</td><td>LinkedIn</td><td>Founder thread: "We built Lontra for the millions of women who know stress is changing their brains."</td><td>Val</td></tr>
+      <tr><td>9:00 AM</td><td>Instagram</td><td>Launch post + Reel (60s). Warm, cinematic. Pre-produced.</td><td>Growth Lead</td></tr>
+      <tr><td>10:00 AM</td><td>TikTok</td><td>3-5 creator posts go live. "I tried the app that actually gets it."</td><td>Creators (pre-coordinated)</td></tr>
+      <tr><td>12:00 PM</td><td>Product Hunt</td><td>"Lontra: AI mental fitness built on real brain science." Free launch platform.</td><td>Val</td></tr>
+      <tr><td>2:00 PM</td><td>Paid ads</td><td>Meta + TikTok ads go live. Pre-built creatives. $500-1K day-one spend.</td><td>Growth Lead</td></tr>
+      <tr><td>6:00 PM</td><td>IG Stories</td><td>Behind-the-scenes: team reactions, first user messages, emotional moments</td><td>Val + Growth Lead</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <strong>What's missing?</strong> No PR embargo. No Reddit AMA. No YouTube macro review. This is the launch two people and AI can execute well. We add channels as we prove traction.
+  </div>
+</div>
+</section>
+
+<!-- PHASE 2 -->
+<section class="section section-alt">
+<div class="section-inner reveal">
+  <div class="phase-badge">Phase 2: First 30 Days</div>
+  <h3>Find the Channels, Build the Engine</h3>
+
+  <h4 style="margin-top:24px;">Paid Acquisition: Two Channels, Done Well</h4>
+  <div class="bar-chart">
+    <div class="bar-row"><div class="bar-label">Meta (IG/FB)</div><div class="bar-track"><div class="bar-fill bar-green" style="width:65%">65%</div></div></div>
+    <div class="bar-row"><div class="bar-label">TikTok</div><div class="bar-track"><div class="bar-fill bar-accent" style="width:35%">35%</div></div></div>
+  </div>
+  <p class="secondary" style="font-size:0.85rem;">Meta: both personas, best creative testing, best retargeting. TikTok: Riley's world, organic amplification via Spark Ads. Apple Search Ads: month 2 if CPA holds.</p>
+
+  <div class="two-col" style="margin-top:24px;">
+    <div>
+      <h4>Organic Content Engine (what 1 person + AI can do)</h4>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Day</th><th>Format</th><th>Theme</th><th>Who Does What</th></tr></thead>
+        <tbody>
+          <tr><td>Mon</td><td>IG Carousel</td><td>"Did you know?" -- one relatable pattern insight</td><td>AI drafts, Growth Lead edits + posts</td></tr>
+          <tr><td>Wed</td><td>TikTok/Reel</td><td>"Things my brain does" relatable content</td><td>Growth Lead films (60 sec), AI captions</td></tr>
+          <tr><td>Fri</td><td>IG Story Poll</td><td>"What's your stress tell?" -- engagement driver, proactive framing</td><td>AI drafts, Growth Lead posts</td></tr>
+          <tr><td>Sun</td><td>Newsletter</td><td>Weekly mental fitness digest</td><td>AI drafts from product insights, Growth Lead reviews</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="secondary" style="font-size:0.85rem;margin-top:8px;">4 pieces/week, not 7. Quality over quantity. LinkedIn (Val's personal) and additional TikToks are bonus if there's bandwidth. No YouTube until month 3.</p>
+    </div>
+    <div>
+      <h4>Referral and Viral Mechanics</h4>
+      <ul class="styled">
+        <li><strong>"Send This to Someone Who Gets It":</strong> After any AI insight, one tap shares a branded card to IG Stories or iMessage. "Lontra saw this pattern in me." Friends tap to try. AI generates the card design; user taps share.</li>
+        <li><strong>Streak sharing:</strong> 7-day streaks generate a progress card with one personal insight -- shareable, warm, never clinical</li>
+        <li><strong>AI quote cards:</strong> Any Lontra insight can become a share-worthy card. Designed to look like something you'd save to your camera roll.</li>
+        <li><strong>Invite a friend:</strong> Both get 1 week free premium when a friend signs up via your link</li>
+      </ul>
+      <div class="callout" style="margin-top:16px;">
+        <strong>Target K-factor: 0.3 at launch, 0.5 by month 3.</strong> The insight-sharing mechanic is the primary viral loop. It works because the insights feel personal and real, not gamified. People share because they feel seen, not because they're competing.
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PHASE 3 -->
+<section class="section">
+<div class="section-inner reveal">
+  <div class="phase-badge">Phase 3: Months 2-3 (Scale or Pivot)</div>
+  <h3>Double Down on What's Working. Kill Everything Else.</h3>
+
+  <div class="card-grid" style="margin-top:24px;">
+    <div class="card card-sm">
+      <h4>Month 2: Optimize the Engine</h4>
+      <ul class="styled">
+        <li><strong>Paid:</strong> If Meta CPA is under $8, increase spend 50%. If not, test new creative before spending more.</li>
+        <li><strong>Creators:</strong> Re-activate top 5 performers from launch wave with second content ask. Begin outreach to 10 more micro-creators.</li>
+        <li><strong>Email:</strong> AI-drafted re-engagement sequences. "Your patterns are still here when you're ready." (no guilt, no streak anxiety)</li>
+        <li><strong>Apple Search Ads:</strong> Add as third channel if unit economics hold on Meta + TikTok.</li>
+        <li><strong>Evaluate Android timeline:</strong> How much demand are we leaving on the table?</li>
+      </ul>
+    </div>
+    <div class="card card-sm">
+      <h4>Month 3: Scale Decision</h4>
+      <ul class="styled">
+        <li><strong>If LTV:CAC > 3x:</strong> Increase paid budget, add Apple Search + Google, consider second hire (content-focused)</li>
+        <li><strong>If LTV:CAC < 2x:</strong> Cut paid spend. Lean into organic + creators. Fix retention before pouring money in.</li>
+        <li><strong>Partnership exploration:</strong> Begin conversations with Peloton, Spotify/Lofi Girl, therapy platforms (Alma referral partnership). These take 2-3 months to close.</li>
+        <li><strong>Product readiness check:</strong> Before signing any mid-tier or macro creators, the app needs to deliver that "holy shit" moment consistently. Core assess-train-reassess loop must be solid.</li>
+      </ul>
+    </div>
+    <div class="card card-sm">
+      <h4>UGC + Creator Flywheel</h4>
+      <ul class="styled">
+        <li>Monthly "What Lontra Noticed" compilation (AI-curated from anonymized user insights)</li>
+        <li>User-submitted "My Lontra Moment" series -- the moment it clicked</li>
+        <li>Creator affiliate: <strong>10-15% recurring rev share</strong> (industry standard; 20% is above market -- reserve that for top 3 performers who prove conversion)</li>
+        <li>Branded IG story templates in the Lontra aesthetic (AI-generated, designer polishes)</li>
+      </ul>
+    </div>
+    <div class="card card-sm">
+      <h4>Retention (AI-Powered, Low Headcount)</h4>
+      <ul class="styled">
+        <li><strong>Contextual nudges:</strong> AI-generated, personalized. "It's late and you're awake. Want to check in?"</li>
+        <li><strong>Email sequences:</strong> 7-day onboarding, weekly pattern digest, re-engagement. All AI-drafted, Growth Lead reviews.</li>
+        <li><strong>Progressive depth:</strong> Features unlock as the AI learns you. This is the retention mechanic, not marketing.</li>
+        <li><strong>NPS survey at day 14:</strong> Identify promoters early. Funnel them to App Store reviews and referrals.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <strong>NOT doing in months 2-3:</strong> Android, Apple Watch, web dashboard, B2B, university pilots, brand partnerships requiring months of negotiation. All month 4+ plays we earn after proving the core loop. Focus is everything.
+  </div>
+</div>
+</section>
+
+<!-- ===================== 5. CONTENT MACHINE ===================== -->
+<section class="section section-deep" id="content">
+<div class="section-inner reveal">
+  <div class="section-label">Section 05</div>
+  <h2>The Content Machine</h2>
+  <p class="lead" style="color:rgba(255,255,255,0.7);">Content is the engine. Paid gets you started. Emotional resonance compounds. Here's the system.</p>
+
+  <h4 style="margin-top:32px;color:#fff;">Pre-Launch Content: What 2 People + AI Actually Produce</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>Asset</th><th>Qty</th><th>Who Makes It</th><th>Due</th></tr></thead>
+    <tbody>
+      <tr><td>Launch Reel (60s, warm, not tech demo)</td><td>1</td><td>Growth Lead films + edits (CapCut)</td><td>1 week pre-launch</td></tr>
+      <tr><td>App Store screenshots</td><td>6</td><td>Annika (design lead) or contractor</td><td>1 week pre-launch</td></tr>
+      <tr><td>Founder story thread (LinkedIn)</td><td>1</td><td>AI drafts, Val personalizes</td><td>Launch day</td></tr>
+      <tr><td>Short-form relatable content</td><td>3</td><td>Growth Lead films, AI captions</td><td>1 week pre-launch</td></tr>
+      <tr><td>Creator kits (brief + assets + brand guide)</td><td>15</td><td>AI generates from brand doc, Growth Lead reviews</td><td>2 weeks pre-launch</td></tr>
+      <tr><td>Email sequences (waitlist + onboarding)</td><td>2 flows</td><td>AI drafts all copy, Growth Lead sets up in Customer.io</td><td>1 week pre-launch</td></tr>
+      <tr><td>Ad creatives (static + video)</td><td>5</td><td>Growth Lead + AI + Canva/CapCut</td><td>Launch day</td></tr>
+      <tr><td>Press pitches (not a kit)</td><td>4</td><td>AI drafts, Val sends personally</td><td>2 weeks pre-launch</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout" style="border-left-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;margin-top:12px;">
+    <strong>The AI leverage:</strong> AI agents draft 80% of written content: email sequences, social copy, creator briefs, press pitches, ad copy variants. The Growth Lead provides the human eye, the cultural judgment, and the on-camera presence. This is how you get the output of a 4-person team from 1 hire.
+  </div>
+
+  <h4 style="margin-top:32px;color:#fff;">Content Pillars</h4>
+  <div class="card-grid" style="margin-top:12px;">
+    <div class="card card-sm">
+      <span class="tag tag-green">Pillar 1</span>
+      <h4 style="margin-top:8px;color:var(--deep);">Building Your Stress Capacity</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Real stories about women getting measurably more resilient: showing up calmer, recovering faster, making better decisions under pressure. Targets: both personas.</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-green">Pillar 2</span>
+      <h4 style="margin-top:8px;color:var(--deep);">Pattern Stories</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">"Lontra showed me my resilience score goes up on days I move my body before noon." Anonymized insights that are specific, personal, and shareable. Targets: Riley.</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-green">Pillar 3</span>
+      <h4 style="margin-top:8px;color:var(--deep);">The Science of Resilience</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">What resilience is, how stress erodes it, how Lontra rebuilds it. The assess-train-reassess loop made warm and accessible. Never clinical-sounding. Targets: Jane (primary), both.</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-accent">Pillar 4</span>
+      <h4 style="margin-top:8px;color:var(--deep);">The Humans + Science Behind the AI</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Transparency content: proprietary assessments, clinical oversight, validated instruments, the clinicians behind the product. "This isn't another chatbot." Trust-building for both personas and media.</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-accent">Pillar 5</span>
+      <h4 style="margin-top:8px;color:var(--deep);">Tools for Right Now</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">30-second to 3-minute exercises: breathing, grounding, cognitive resets. Try them free, then realize Lontra does this personalized and tracks your progress. Lead gen through value.</p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:32px;color:#fff;">The Viral Loop: Pattern Insight Sharing</h4>
+  <div class="callout" style="border-left-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;">
+    <p style="margin-bottom:12px;"><strong>Two loops:</strong> (1) <strong>Pattern Insights:</strong> Lontra surfaces a pattern, user shares a branded insight card, friends tap to try a free 60-second quiz. (2) <strong>Resilience Score:</strong> Users share their baseline score card. Friends take the free mini-assessment on web (no download required). After the result: "Want to build your resilience? Lontra coaches you daily and proves your progress."</p>
+    <p><strong>Why it works:</strong> Pattern insights are intimate (people share because they feel seen). Resilience scores are motivating (people want to know where they stand). Both are low-friction, web-based. The assessment creates a "holy shit, that's accurate" moment no competitor can replicate.</p>
+  </div>
+
+  <h4 style="margin-top:32px;color:#fff;">Creator Brief Template</h4>
+  <div class="card" style="font-size:0.88rem;">
+    <p style="color:var(--secondary);margin-bottom:12px;">What we send to every influencer partner:</p>
+    <p><strong>Brand:</strong> Lontra -- Mental Fitness Built on Real Brain Science</p>
+    <p><strong>Key message:</strong> "When stress goes haywire, Lontra helps you rewire. Guided by real clinicians. Remembers your patterns. Proves your progress."</p>
+    <p><strong>Mandatory mentions:</strong> "Guided by real clinicians" + pattern recognition + available 24/7</p>
+    <p><strong>Tone:</strong> Warm, honest, personal. Share your genuine experience. What moment surprised you? When did it feel like Lontra actually understood?</p>
+    <p><strong>CTA:</strong> "Link in bio" or "Use my code [NAME] for 1 month free"</p>
+    <p><strong>Do NOT say:</strong> "therapy replacement," "diagnoses," "cures anxiety," "biohacking," "optimization"</p>
+    <p><strong>Format:</strong> 60-90 second video (TikTok/Reel) OR 3+ IG story frames showing a real moment with the app</p>
+    <p><strong>Deliverable:</strong> Draft for approval within 5 business days of receiving access</p>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 6. INFLUENCER PLAYBOOK ===================== -->
+<section class="section" id="influencers">
+<div class="section-inner reveal">
+  <div class="section-label">Section 06</div>
+  <h2>The Influencer Playbook</h2>
+  <p class="lead">30 creators who genuinely believe, not 100 who post once. Women athletes, therapists, resilience experts. Authenticity over reach.</p>
+
+  <div class="callout" style="margin-top:24px;">
+    <strong>Product gate:</strong> The assess-train-reassess loop and resilience scoring must work before any paid creator touches it. A bad creator experience is worse than none. Gift 5 creators early to test. Sign paid creators only after they're genuinely enthusiastic.
+  </div>
+
+  <h4 style="margin-top:32px;">Dream Tier (Month 3+, after proving product)</h4>
+  <p class="secondary" style="font-size:0.85rem;margin-bottom:12px;">These are aspirational. We earn the right to pitch them by having a product with real user stories and retention data.</p>
+  <div class="card-grid" style="margin-top:12px;">
+    <div class="card card-sm">
+      <h4>Dr. Julie Smith (@drjulie)</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">2M IG, 10M+ across platforms. Clinical psychologist. Her audience IS Riley. Pitch: clinical advisor role. Cost: $50K-100K. <strong>Not for launch. For month 3+ after we have data.</strong></p>
+    </div>
+    <div class="card card-sm">
+      <h4>Naomi Osaka (@naaboroshi)</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">2.8M IG, 6.4% engagement. Sparked global athlete mental health conversation. "It's OK to not be OK" aligns perfectly with resilience messaging. <strong>Aspirational. Requires budget we don't have yet.</strong></p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:32px;">Target Creators: Who We Actually Reach Out To</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>Name</th><th>Handle</th><th>Followers</th><th>Why She Fits</th><th>Deal Structure</th></tr></thead>
+    <tbody>
+      <tr><td colspan="5" style="background:rgba(74,124,111,0.08);font-weight:700;">Female Athletes (Resilience is their brand)</td></tr>
+      <tr><td>Allie Ostrander</td><td>@allie_ostrander</td><td>~204K IG</td><td>Pro runner, vocal about mental health + eating disorder recovery. Authentic, mission-aligned.</td><td>Gifted + $2K flat + 10%</td></tr>
+      <tr><td>Kaydi (Kaydi Runs)</td><td>@kaydiruns</td><td>~127K IG</td><td>Ultrarunner, mental health advocate. Mid-tier, highly engaged, authentic on resilience.</td><td>Gifted + $1.5K flat + 10%</td></tr>
+      <tr><td>Callie Vinson</td><td>@callierunsultra</td><td>~147K IG</td><td>Running coach, body diversity, lost 200 lbs. Resilience + transformation story.</td><td>Gifted + $1.5K flat + 10%</td></tr>
+      <tr><td colspan="5" style="background:rgba(107,58,77,0.08);font-weight:700;">Mental Health / Therapy Creators (Riley's world)</td></tr>
+      <tr><td>Dr. Mariel Buque</td><td>@dr.marielbuque</td><td>~283K IG</td><td>Licensed psychologist, bestselling author. Clinical credibility + right follower range.</td><td>Gifted + $3K flat + 10%</td></tr>
+      <tr><td>Micheline Maalouf</td><td>@micheline.maalouf</td><td>~264K IG</td><td>Trauma therapist, speaker. Culturally resonant, diverse audience.</td><td>Gifted + $2.5K flat + 10%</td></tr>
+      <tr><td>Yolanda Lewis</td><td>@yolandalewis.yc</td><td>~220K IG</td><td>Therapist and speaker on breaking cycles and building foundations.</td><td>Gifted + $2K flat + 10%</td></tr>
+      <tr><td>Hannah Daisy</td><td>@hannahdaisyart</td><td>~153K IG</td><td>Mental health illustrator. Visual content translates beautifully to branded assets.</td><td>Gifted + $1.5K flat + 10%</td></tr>
+      <tr><td colspan="5" style="background:rgba(74,124,111,0.08);font-weight:700;">Resilience / Women's Wellness (Jane's world)</td></tr>
+      <tr><td>Dr. Taryn Marie</td><td>@drtarynmarie</td><td>~319K IG</td><td>USA Today resilience expert. Literally studies resilience science. Perfect brand fit.</td><td>Gifted + $3K flat + 10%</td></tr>
+      <tr><td>Noelle Tarr</td><td>@coconutsandkettlebells</td><td>~104K IG</td><td>"Well Fed Women" podcast. Strength, longevity, resilience, hormones, women's health.</td><td>Gifted + $1K flat + 10%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4 style="margin-top:32px;">The 30-Creator Blitz (Launch Week)</h4>
+  <div class="card" style="margin-top:12px;">
+    <div class="two-col">
+      <div>
+        <p style="font-size:0.9rem;margin-bottom:12px;"><strong>The play:</strong> 30 creators, not 100. What one Growth Lead can actually manage. Split: 20 Riley-world, 10 Jane-world.</p>
+        <ul class="styled">
+          <li>AI agent identifies targets from IG/TikTok, drafts personalized DMs</li>
+          <li>Growth Lead reviews and sends from personal/brand account</li>
+          <li>Creator Kit: free 6-month access + branded templates + affiliate link (10% rev share, upgradeable to 15% for top performers)</li>
+          <li>Ask for ONE piece: "Your honest reaction to the moment Lontra surprised you"</li>
+          <li>No script. Authenticity is the point.</li>
+          <li>Budget: $0-500 per creator (gifted + small bonus for best content)</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:0.9rem;margin-bottom:12px;"><strong>Expected results from 30 creators:</strong></p>
+        <div class="dash-grid" style="margin:0;">
+          <div class="dash-card"><div class="dash-value">30</div><div class="dash-label">Pieces of content</div></div>
+          <div class="dash-card"><div class="dash-value">750K</div><div class="dash-label">Combined impressions</div></div>
+          <div class="dash-card"><div class="dash-value">5-8%</div><div class="dash-label">Avg engagement rate</div></div>
+          <div class="dash-card"><div class="dash-value">$0.50</div><div class="dash-label">Est. CPM</div></div>
+        </div>
+        <p style="font-size:0.85rem;color:var(--secondary);margin-top:12px;">Micro-influencers in health deliver 22x higher conversion rates than macro (InfluenceFlow, 2026). Better to have 30 creators who genuinely believe than 100 who posted once and forgot.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <strong>Economics:</strong> Industry standard: flat CPA ($15-200) or 5-15% recurring. BetterHelp: $100-200 flat. Headspace: 4-8% recurring. Our 10% recurring + flat fee is competitive. Reserve 15-20% for top 3 proven performers only.
+  </div>
+</div>
+</section>
+
+<!-- ===================== 7. PAID MEDIA ===================== -->
+<section class="section section-alt" id="paid">
+<div class="section-inner reveal">
+  <div class="section-label">Section 07</div>
+  <h2>Paid Media Plan</h2>
+  <p class="lead">Two channels. Scrappy creative. Test fast, kill losers, scale winners. No $100K/mo fantasies until unit economics are proven.</p>
+
+  <h4 style="margin-top:32px;">Channel Allocation: Meta 65% / TikTok 35%</h4>
+  <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:center;margin:24px 0;">
+    <svg viewBox="0 0 200 200" width="220" height="220">
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(74,124,111,0.1)" stroke-width="32"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#4A7C6F" stroke-width="32" stroke-dasharray="326.7 175.3" stroke-dashoffset="126" transform="rotate(-90 100 100)"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#6B3A4D" stroke-width="32" stroke-dasharray="175.9 326.1" stroke-dashoffset="-200.7" transform="rotate(-90 100 100)"/>
+      <circle cx="100" cy="100" r="60" fill="var(--bg)"/>
+      <text x="100" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="var(--deep)">Paid</text>
+      <text x="100" y="112" text-anchor="middle" font-size="10" fill="var(--secondary)">2 Channels</text>
+    </svg>
+    <div class="donut-legend">
+      <div class="donut-legend-item"><div class="donut-legend-swatch" style="background:#4A7C6F"></div>Meta (IG/FB) -- 65% (both personas, best testing infra)</div>
+      <div class="donut-legend-item"><div class="donut-legend-swatch" style="background:#6B3A4D"></div>TikTok Ads -- 35% (Riley's home, Spark Ads for organic boost)</div>
+    </div>
+  </div>
+
+  <h4>Budget Tiers: Start Small, Scale with Data</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th style="width:120px">Budget</th><th>What It Buys</th><th>Est. Downloads/Mo</th><th>Est. CPA</th></tr></thead>
+    <tbody>
+      <tr><td><strong>$5K/mo</strong><br><span style="font-size:0.7rem;color:var(--secondary);">Pre-launch</span></td><td>Meta only. 3-4 ad creatives testing resilience quiz funnel. Learn what converts before spending real money.</td><td>800-1,200</td><td>$4-6</td></tr>
+      <tr><td><strong>$15K/mo</strong><br><span style="font-size:0.7rem;color:var(--secondary);">Month 1</span></td><td>Meta + TikTok. 5-6 creatives. Retargeting quiz takers. A/B test Riley vs. Jane messaging.</td><td>2,500-4,000</td><td>$3.50-6</td></tr>
+      <tr><td><strong>$25K/mo</strong><br><span style="font-size:0.7rem;color:var(--secondary);">Months 2-3 (if CPA holds)</span></td><td>Scale winning creatives. Add Apple Search Ads. Lookalike audiences from best converters. Growth Lead running the whole thing.</td><td>5,000-8,000</td><td>$3-5</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <strong>The rule:</strong> Don't increase spend until CPA is proven and LTV:CAC is above 3x. If we can't get installs under $8 on Meta in month 1, we fix creative before spending more. Growth Lead owns this end to end.
+  </div>
+
+  <h4 style="margin-top:32px;">Creative Concepts</h4>
+  <div class="card-grid" style="margin-top:12px;">
+    <div class="card card-sm">
+      <span class="tag tag-green">Concept 1: "Mental Fitness"</span>
+      <p style="font-size:0.85rem;margin-top:8px;"><strong>20s vertical.</strong> Woman's day: run, meetings, family. VO: "You train your body. You track your sleep. But what about your resilience?" Cut to Lontra score trending up.</p>
+      <p style="font-size:0.85rem;"><strong>CTA:</strong> "Try Lontra free" / Both personas / Meta + TikTok</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-green">Concept 2: "Where Do You Stand?"</span>
+      <p style="font-size:0.85rem;margin-top:8px;"><strong>20s vertical.</strong> Woman takes 60-second assessment. Score: "Your emotional resilience: 62." Two weeks later: "71." She smiles. This is the assessment funnel ad.</p>
+      <p style="font-size:0.85rem;"><strong>CTA:</strong> "How resilient are you? Find out in 60 seconds." / Both personas / Meta + TikTok</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-accent">Concept 3: "The Pattern"</span>
+      <p style="font-size:0.85rem;margin-top:8px;"><strong>25s screen-recording style.</strong> AI says: "Your resilience scores are highest on days you move your body and eat before 1 PM." User reacts: "How did it know that?"</p>
+      <p style="font-size:0.85rem;"><strong>CTA:</strong> "Try Lontra free for 7 days" / Riley / TikTok + IG</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-accent">Concept 4: "The Next Frontier"</span>
+      <p style="font-size:0.85rem;margin-top:8px;"><strong>30s cinematic.</strong> Running at sunrise. Oura. Peloton. Coffee. VO: "You've invested in your body. Now invest in your resilience." Cut to Lontra resilience trends.</p>
+      <p style="font-size:0.85rem;"><strong>CTA:</strong> "A new kind of mental fitness." / Jane / LinkedIn + podcasts</p>
+    </div>
+    <div class="card card-sm">
+      <span class="tag tag-deep">Concept 5: "Not Therapy, But..."</span>
+      <p style="font-size:0.85rem;margin-top:8px;"><strong>15s text-overlay.</strong> Warm, soft-focus. "Not therapy." Beat. "Not meditation." Beat. "Proactive mental fitness built on real science." Lontra logo.</p>
+      <p style="font-size:0.85rem;"><strong>CTA:</strong> "Download Lontra" / Both personas / Everywhere. The brand ad.</p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:32px;">Targeting Strategies: Deep on Two Channels</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>Channel</th><th>Primary Audiences</th><th>Strategy</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Meta (IG/FB)</strong></td><td><strong>Riley:</strong> 21-32F, mental health, self-improvement, wellness.<br><strong>Jane:</strong> 38-52F, fitness tracking, longevity, women's health.</td><td>Riley ads vs. Jane ads. Retarget quiz takers. Lookalikes from converters. 3-4 new creatives weekly.</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>18-32F, therapy-tok, self-care, resilience</td><td>Spark Ads (boost creator content $50-100/post). Riley's home turf. Organic reach still possible.</td></tr>
+      <tr><td style="color:var(--secondary);"><em>Month 2+:</em><br><strong>Apple Search</strong></td><td>"anxiety app," "mental fitness," competitor names</td><td>High-intent captures. Bid competitor terms. Add only after proving Meta + TikTok economics.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout" style="margin-top:24px;">
+    <strong>Attribution:</strong> Self-reported "How did you hear about us?" in onboarding + UTM parameters + RevenueCat. Branch/AppsFlyer is a month 2 add. Don't pay $1.5K/mo before the data justifies it.
+  </div>
+</div>
+</section>
+
+<!-- ===================== 8. METRICS ===================== -->
+<section class="section section-deep" id="metrics">
+<div class="section-inner reveal">
+  <div class="section-label">Section 08</div>
+  <h2>Metrics & KPIs</h2>
+  <p class="lead" style="color:rgba(255,255,255,0.7);">What we measure. What "good" looks like. No vanity metrics.</p>
+
+  <h4 style="margin-top:32px;color:#fff;">North Star by Phase (honest targets for our budget)</h4>
+  <div class="card-grid" style="margin-top:12px;">
+    <div class="card card-sm" style="text-align:center;">
+      <div class="tag tag-green">Pre-Launch</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--deep);margin:12px 0;">Waitlist Signups</div>
+      <p style="font-size:0.85rem;color:var(--secondary);">Target: 3,000</p>
+    </div>
+    <div class="card card-sm" style="text-align:center;">
+      <div class="tag tag-green">Launch Week</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--deep);margin:12px 0;">Week 1 Downloads</div>
+      <p style="font-size:0.85rem;color:var(--secondary);">Target: 2,000</p>
+    </div>
+    <div class="card card-sm" style="text-align:center;">
+      <div class="tag tag-green">Month 1</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--deep);margin:12px 0;">Trial-to-Paid Rate</div>
+      <p style="font-size:0.85rem;color:var(--secondary);">Target: 12-18%</p>
+    </div>
+    <div class="card card-sm" style="text-align:center;">
+      <div class="tag tag-accent">Month 3</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--deep);margin:12px 0;">Prove LTV:CAC > 3x</div>
+      <p style="font-size:0.85rem;color:var(--secondary);">This unlocks budget to scale</p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:32px;color:#fff;">Unit Economics</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>Metric</th><th>$9.99/mo</th><th>$14.99/mo</th><th>$79.99/yr</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LTV (12-mo, 40% annual churn)</strong></td><td>$72</td><td>$108</td><td>$80</td></tr>
+      <tr><td><strong>Target CAC</strong></td><td>$15-20</td><td>$20-28</td><td>$18-22</td></tr>
+      <tr><td><strong>LTV:CAC Ratio</strong></td><td>3.6-4.8x</td><td>3.9-5.4x</td><td>3.6-4.4x</td></tr>
+      <tr><td><strong>Payback Period</strong></td><td>1.5-2 months</td><td>1.3-1.9 months</td><td>Immediate (annual)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4 style="margin-top:32px;color:#fff;">Retention Benchmarks</h4>
+  <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:16px;">Benchmarks vs. health & fitness app category averages (Appsflyer, 2025)</p>
+  <div class="bar-chart">
+    <div class="bar-row"><div class="bar-label" style="color:#fff;">Day 1</div><div class="bar-track" style="background:rgba(255,255,255,0.1);"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,#4A7C6F,#6B3A4D);">55% target</div></div></div>
+    <div class="bar-row"><div class="bar-label" style="color:rgba(255,255,255,0.5);">Category avg</div><div class="bar-track" style="background:rgba(255,255,255,0.1);"><div class="bar-fill" style="width:32%;background:rgba(255,255,255,0.2);">32%</div></div></div>
+    <div class="bar-row"><div class="bar-label" style="color:#fff;">Day 7</div><div class="bar-track" style="background:rgba(255,255,255,0.1);"><div class="bar-fill" style="width:30%;background:linear-gradient(90deg,#4A7C6F,#6B3A4D);">30% target</div></div></div>
+    <div class="bar-row"><div class="bar-label" style="color:rgba(255,255,255,0.5);">Category avg</div><div class="bar-track" style="background:rgba(255,255,255,0.1);"><div class="bar-fill" style="width:15%;background:rgba(255,255,255,0.2);">15%</div></div></div>
+    <div class="bar-row"><div class="bar-label" style="color:#fff;">Day 30</div><div class="bar-track" style="background:rgba(255,255,255,0.1);"><div class="bar-fill" style="width:18%;background:linear-gradient(90deg,#4A7C6F,#6B3A4D);">18% target</div></div></div>
+    <div class="bar-row"><div class="bar-label" style="color:rgba(255,255,255,0.5);">Category avg</div><div class="bar-track" style="background:rgba(255,255,255,0.1);"><div class="bar-fill" style="width:8%;background:rgba(255,255,255,0.2);">8%</div></div></div>
+  </div>
+
+  <h4 style="margin-top:32px;color:#fff;">KPIs That Actually Matter at This Stage</h4>
+  <div class="dash-grid" style="margin-top:12px;">
+    <div class="dash-card"><div class="dash-value" style="color:var(--primary);">40%</div><div class="dash-label">Waitlist-to-Download Conversion</div></div>
+    <div class="dash-card"><div class="dash-value" style="color:var(--primary);">0.3</div><div class="dash-label">K-Factor (Launch)</div></div>
+    <div class="dash-card"><div class="dash-value" style="color:var(--primary);">15%</div><div class="dash-label">Trial-to-Paid (Month 1)</div></div>
+    <div class="dash-card"><div class="dash-value" style="color:var(--primary);">3.0x+</div><div class="dash-label">LTV:CAC (Minimum to Scale)</div></div>
+    <div class="dash-card"><div class="dash-value" style="color:var(--primary);">&lt;$8</div><div class="dash-label">CPA Target (Meta)</div></div>
+    <div class="dash-card"><div class="dash-value" style="color:var(--primary);">30%</div><div class="dash-label">D7 Retention (Target)</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 9. BUDGET & TIMELINE ===================== -->
+<section class="section" id="budget">
+<div class="section-inner reveal">
+  <div class="section-label">Section 09</div>
+  <h2>Budget & Timeline</h2>
+  <p class="lead">~$150K total. 1 hire. No PR agency. No fancy tools. No third hire until we prove PMF. Here's exactly where it goes.</p>
+
+  <h4 style="margin-top:32px;">4-Month Budget: Scrappy and Honest</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>Category</th><th>Pre-Launch<br><span style="font-weight:400;font-size:0.7rem;">4 weeks</span></th><th>Month 1<br><span style="font-weight:400;font-size:0.7rem;">Launch</span></th><th>Month 2</th><th>Month 3</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Paid Media</strong></td><td>$3K</td><td>$15K</td><td>$20K</td><td>$25K</td><td><strong>$63K</strong></td></tr>
+      <tr><td><strong>Influencer / Creators</strong></td><td>$5K</td><td>$10K</td><td>$8K</td><td>$10K</td><td><strong>$33K</strong></td></tr>
+      <tr><td><strong>Content Production</strong></td><td>$3K</td><td>$3K</td><td>$2K</td><td>$2K</td><td><strong>$10K</strong></td></tr>
+      <tr><td><strong>Tools & Analytics</strong></td><td>$1K</td><td>$1K</td><td>$1K</td><td>$1K</td><td><strong>$4K</strong></td></tr>
+      <tr style="background:rgba(74,124,111,0.06);"><td><strong>MARKETING SPEND</strong></td><td><strong>$12K</strong></td><td><strong>$29K</strong></td><td><strong>$31K</strong></td><td><strong>$38K</strong></td><td><strong>$110K</strong></td></tr>
+      <tr><td><strong>Growth Lead salary (4 mo)</strong></td><td colspan="4" style="text-align:center;">$8-10K/mo contract or $100-120K/yr FTE</td><td><strong>$32-40K</strong></td></tr>
+      <tr style="background:rgba(107,58,77,0.06);"><td><strong>ALL-IN TOTAL</strong></td><td colspan="4"></td><td><strong>~$150K</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <strong>$150K vs. $553K.</strong> Old plan: 3 hires, 6 channels, PR agency. This plan: 1 hire, 2 channels, AI doing 60% of ops. Same ambition. 73% less spend. Prove LTV:CAC by month 3, earn the right to scale.
+  </div>
+
+  <h4 style="margin-top:32px;">Team: One Hire + AI + Val</h4>
+  <div class="card-grid" style="margin-top:12px;">
+    <div class="card card-sm" style="border-left:4px solid var(--primary);">
+      <span class="tag tag-green">THE hire: Now</span>
+      <h4 style="margin-top:8px;">Growth Lead (Scrappy Generalist)</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Runs paid ads, films short-form content, manages 30 creator relationships, sets up email flows, reviews AI output. 3-5 years DTC/app experience. Comfortable on camera. Knows the creator economy. Ideally IS Riley.</p>
+      <p style="font-size:0.85rem;color:var(--deep);margin-top:8px;font-weight:600;">Profile: 26-30F, paid media + content creation, TikTok-native, switches between creative and analytical. $100-120K FTE or $8-10K/mo contract.</p>
+    </div>
+    <div class="card card-sm" style="border-left:4px solid var(--accent);">
+      <span class="tag tag-accent">AI Agents Replace Headcount</span>
+      <h4 style="margin-top:8px;">What AI Does (No Hire Needed)</h4>
+      <ul class="styled">
+        <li><strong>Content drafting:</strong> Social copy, email sequences, ad copy variants, newsletter drafts</li>
+        <li><strong>Creator research:</strong> Identify targets, analyze engagement, draft personalized DMs</li>
+        <li><strong>Press pitches:</strong> Draft pitches to journalists, monitor HARO for relevant queries</li>
+        <li><strong>Analytics summaries:</strong> Weekly performance digests from Meta/TikTok dashboards</li>
+        <li><strong>Brand assets:</strong> Creator kits, IG story templates, ad creative variations</li>
+        <li><strong>Email automation:</strong> Waitlist nurture, onboarding flows, re-engagement sequences</li>
+        <li><strong>Competitive monitoring:</strong> Track what Calm, Headspace, BetterHelp are doing</li>
+      </ul>
+      <p style="font-size:0.82rem;color:var(--secondary);margin-top:8px;">Output of 2-3 junior hires, done by AI with human review. Growth Lead: 20% reviewing AI, 80% filming, building relationships, optimizing campaigns.</p>
+    </div>
+    <div class="card card-sm" style="border-left:4px solid var(--deep);">
+      <span class="tag tag-deep">Month 3+ (Earned Hires)</span>
+      <h4 style="margin-top:8px;">Hire #2: Content Creator (if traction proves out)</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">If organic content is driving meaningful growth, hire a dedicated short-form video creator. Someone who can produce 5+ TikToks/Reels per week. This hire is earned, not assumed.</p>
+      <h4 style="margin-top:12px;">Contract Support</h4>
+      <p style="font-size:0.85rem;color:var(--secondary);">Freelance video editor ($1-2K/mo). Freelance designer for ad creative iterations ($1K/mo). These are as-needed, not full headcount.</p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:32px;">Tools Stack (Under $1K/mo Total)</h4>
+  <div class="table-wrap" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>Category</th><th>Tool</th><th>Cost/mo</th></tr></thead>
+    <tbody>
+      <tr><td>Subscription billing</td><td>RevenueCat (already contracted)</td><td>Included</td></tr>
+      <tr><td>Analytics</td><td>Mixpanel (free tier) or Amplitude</td><td>$0</td></tr>
+      <tr><td>Email/Push</td><td>Customer.io (startup plan)</td><td>$150</td></tr>
+      <tr><td>Social scheduling</td><td>Later (free tier) or Buffer</td><td>$0-18</td></tr>
+      <tr><td>Creative</td><td>Canva Pro + CapCut Pro</td><td>$25</td></tr>
+      <tr><td>Attribution</td><td>Self-reported + UTMs (free). Branch month 2+.</td><td>$0-500</td></tr>
+      <tr><td>AI tools</td><td>Claude / ChatGPT for content drafting</td><td>$20-200</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="secondary" style="font-size:0.82rem;margin-top:8px;">No Grin, Sprout Social, or AppTweak. Google Sheets for creators. Notion for content calendar. Scrappy until revenue justifies tools.</p>
+
+  <h4 style="margin-top:32px;">4-Month Gantt: What Actually Happens</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="grid-template-columns: 160px repeat(4, 1fr);">
+      <div class="gantt-header"></div>
+      <div class="gantt-header">Pre-Launch<br><span style="font-size:0.6rem;">(4 weeks)</span></div>
+      <div class="gantt-header">Month 1<br><span style="font-size:0.6rem;">Launch</span></div>
+      <div class="gantt-header">Month 2<br><span style="font-size:0.6rem;">Optimize</span></div>
+      <div class="gantt-header">Month 3<br><span style="font-size:0.6rem;">Scale or Pivot</span></div>
+
+      <div class="gantt-label">Hire Growth Lead</div>
+      <div class="gantt-cell"><div class="gantt-bar g-accent"></div></div>
+      <div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div>
+
+      <div class="gantt-label">Resilience Quiz Funnel</div>
+      <div class="gantt-cell"><div class="gantt-bar g-deep"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+
+      <div class="gantt-label">Paid Media (Meta + TikTok)</div>
+      <div class="gantt-cell"><div class="gantt-bar g-light"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+
+      <div class="gantt-label">Creator Outreach (30)</div>
+      <div class="gantt-cell"><div class="gantt-bar g-accent"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-accent"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-light"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-accent"></div></div>
+
+      <div class="gantt-label">Organic Content (4x/wk)</div>
+      <div class="gantt-cell"><div class="gantt-bar g-light"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+
+      <div class="gantt-label">Email / Lifecycle (AI-powered)</div>
+      <div class="gantt-cell"><div class="gantt-bar g-deep"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+      <div class="gantt-cell"><div class="gantt-bar g-green"></div></div>
+
+      <div class="gantt-label">Scale Decision</div>
+      <div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div>
+      <div class="gantt-cell"><div class="gantt-bar g-accent"></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 10. THE ASK ===================== -->
+<section class="section section-accent" id="ask">
+<div class="section-inner reveal">
+  <div class="section-label">Section 10</div>
+  <h2>The Ask: Three Things This Week</h2>
+  <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:640px;margin-bottom:32px;">Not five. Not ten. Three. This is what a team of Val + one hire + AI can execute right now.</p>
+</div>
+</section>
+
+<section class="section section-alt">
+<div class="section-inner reveal">
+  <h3 style="margin-bottom:20px;">3 Actions This Week</h3>
+  <ol class="action-list">
+    <li class="action-item">
+      <h4>Hire the Growth Lead</h4>
+      <p style="font-size:0.88rem;color:var(--secondary);">Post today. 26-30F, 3-5 years DTC/app, has run Meta/TikTok paid, comfortable on camera. Contract OK to start fast. Sets up ad accounts in week one. Every day without them is data we don't have at launch. <strong>Source through LinkedIn, SonderMind network, marketing Slack communities.</strong></p>
+    </li>
+    <li class="action-item">
+      <h4>Build the "How Resilient Are You?" Assessment Funnel</h4>
+      <p style="font-size:0.88rem;color:var(--secondary);">60-second web-based mini resilience assessment (simplified from Total Brain instruments). Score gated behind email. This is the waitlist engine, the viral mechanic, and a product taste. Live within 7 days. $50-100/day Meta ads to it immediately.</p>
+    </li>
+    <li class="action-item">
+      <h4>Send 10 Creator DMs from Val's Account</h4>
+      <p style="font-size:0.88rem;color:var(--secondary);">AI drafts personalized DMs for 10 creators from the target list. Val reviews, personalizes, sends from her own IG/LinkedIn. Founder DMs convert 3-5x better than agency outreach. Offer: founding creator access + honest feedback request.</p>
+    </li>
+  </ol>
+
+  <div class="two-col" style="margin-top:40px;">
+    <div>
+      <h4>Must Have Before Launch</h4>
+      <ul class="styled">
+        <li>Growth Lead hired and running ads</li>
+        <li>Resilience quiz funnel live and converting</li>
+        <li>5 ad creatives tested (AI-drafted, Growth Lead reviews)</li>
+        <li>App Store listing with warm, on-brand screenshots</li>
+        <li>2 email flows (waitlist nurture + 7-day onboarding)</li>
+        <li>5-10 creators with early access (testing the product)</li>
+        <li>Val's LinkedIn founder story thread drafted</li>
+        <li>Assess-train-reassess loop working in the app</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explicitly NOT Doing (yet)</h4>
+      <ul class="styled">
+        <li>PR agency (leverage SonderMind PR instead)</li>
+        <li>Android launch (wait for PMF signal)</li>
+        <li>Podcast ad buys (too expensive pre-data)</li>
+        <li>Brand partnerships (earn the right first)</li>
+        <li>Ambassador program (month 2+ after identifying users)</li>
+        <li>Apple Watch / web dashboard (month 4+)</li>
+        <li>B2B employer channel (much later)</li>
+        <li>Reddit, Google/YT paid (month 2+ if CPA holds on Meta/TikTok)</li>
+        <li>Influencer management tools (use Google Sheets)</li>
+        <li>Hiring anyone beyond the Growth Lead</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-accent" style="margin-top:32px;">
+    <strong>Why this plan works:</strong> Every dollar has a job. One hire owns the engine. AI multiplies output 4x. Two channels get full attention instead of six getting scraps. We prove economics before we scale. The big ideas (resilience positioning, assessment funnel as viral mechanic, clinical science as moat) don't need big budgets. They need sharp execution.
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<section class="section" style="padding:48px 24px;text-align:center;">
+  <div class="section-inner">
+    <p style="font-size:1.4rem;font-weight:700;color:var(--deep);margin-bottom:8px;">Lontra</p>
+    <p class="secondary" style="font-size:0.88rem;">Proactive mental fitness.</p>
+    <p class="secondary" style="font-size:0.78rem;margin-top:16px;">Go-To-Market Strategy / Scrappy Edition / March 2026 / Confidential</p>
+  </div>
+</section>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav hide/show on scroll
+let lastScroll = 0;
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  nav.classList.toggle('hidden', st > lastScroll && st > 100);
+  lastScroll = st;
+});
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
